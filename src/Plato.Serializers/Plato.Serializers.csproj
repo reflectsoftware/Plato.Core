@@ -1,16 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.4.0" />        
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\Plato.NET.licenseheader" Link="Plato.NET.licenseheader" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nito.AsyncEx.Coordination" Version="1.0.2" />
-    <PackageReference Include="Nito.AsyncEx.Tasks" Version="1.1.0" />
+    <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
   </ItemGroup>
 
 </Project>

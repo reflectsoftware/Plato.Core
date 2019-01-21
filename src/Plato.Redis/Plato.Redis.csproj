@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Plato.NET.licenseheader" Link="Plato.NET.licenseheader" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.4.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
