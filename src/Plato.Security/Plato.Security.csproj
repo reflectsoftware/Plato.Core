@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plato.Serializers\Plato.Serializers.csproj" />
+    <ProjectReference Include="..\Plato\Plato.csproj" />
+  </ItemGroup>
+
+</Project>

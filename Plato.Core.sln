@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.RMQ", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.AMQ", "src\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj", "{93906F63-8867-4829-92F7-205D8A64116C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Security", "src\Plato.Security\Plato.Security.csproj", "{A4872741-6AFE-4978-8E7A-B2004837AC8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{93906F63-8867-4829-92F7-205D8A64116C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93906F63-8867-4829-92F7-205D8A64116C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93906F63-8867-4829-92F7-205D8A64116C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4872741-6AFE-4978-8E7A-B2004837AC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4872741-6AFE-4978-8E7A-B2004837AC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4872741-6AFE-4978-8E7A-B2004837AC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4872741-6AFE-4978-8E7A-B2004837AC8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{F292E483-BDB5-49FD-9CB6-C68C37D44479} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{114413B4-40E6-479B-AB1E-C040B2C14662} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{93906F63-8867-4829-92F7-205D8A64116C} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{A4872741-6AFE-4978-8E7A-B2004837AC8D} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E762F8-B6A5-4940-BAC1-4DF4207C9583}
