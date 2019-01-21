@@ -1,20 +1,20 @@
-﻿// Plato.NET
-// Copyright (c) 2017 ReflectSoftware Inc.
+﻿// Plato.Core
+// Copyright (c) 2019 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-namespace Plato.Strings
+namespace Plato.Extensions
 {
     /// <summary>
     ///
     /// </summary>
-    public static class StringHash
+    public static class StringHashExtensions
     {
         /// <summary>
         /// Rses the hash.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long RSHash(string str)
+        public static long RSHash(this string str)
         {
             const int b = 378551;
             var a = 63689;
@@ -34,7 +34,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long JSHash(string str)
+        public static long JSHash(this string str)
         {
             var hash = 1315423911L;
 
@@ -51,7 +51,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long ELFHash(string str)
+        public static long ELFHash(this string str)
         {
             long hash = 0;
             var x = 0L;
@@ -75,7 +75,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long BKDRHash(string str)
+        public static long BKDRHash(this string str)
         {
             const long seed = 131;
             var hash = 0L;
@@ -93,7 +93,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long SDBMHash(string str)
+        public static long SDBMHash(this string str)
         {
             var hash = 0L;
 
@@ -110,7 +110,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long DJBHash(string str)
+        public static long DJBHash(this string str)
         {
             var hash = 5381L;
 
@@ -127,7 +127,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long DEKHash(string str)
+        public static long DEKHash(this string str)
         {
             long hash = str.Length;
 
@@ -144,7 +144,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long BPHash(string str)
+        public static long BPHash(this string str)
         {
             var hash = 0L;
 
@@ -161,7 +161,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long FNVHash(string str)
+        public static long FNVHash(this string str)
         {
             long fnv_prime = 0x811C9DC5;
             long hash = 0;
@@ -180,7 +180,7 @@ namespace Plato.Strings
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static long APHash(string str)
+        public static long APHash(this string str)
         {
             long hash = 0xAAAAAAAA;
 

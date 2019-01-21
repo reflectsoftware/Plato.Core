@@ -1,12 +1,15 @@
-﻿// Plato.NET
-// Copyright (c) 2017 ReflectSoftware Inc.
+﻿// Plato.Core
+// Copyright (c) 2019 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-using Plato.Strings;
+using Plato.Extensions;
 using System;
 
 namespace Plato.BigInteger
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BigInteger
     {
         // maximum length of the BigInteger in uint (4 bytes)
@@ -820,7 +823,7 @@ namespace Plato.BigInteger
 
         public override int GetHashCode()
         {
-            return (int)StringHash.BKDRHash(ToString());
+            return (int)ToString().BKDRHash();
         }
 
 
