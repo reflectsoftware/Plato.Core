@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Solution Items", "01. Solution Items", "{83BAC6DB-AF54-4978-A70F-D84761E606E1}"
 	ProjectSection(SolutionItems) = preProject
-		src\Plato.NET.licenseheader = src\Plato.NET.licenseheader
+		src\Plato.Core.licenseheader = src\Plato.Core.licenseheader
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.TestHarness", "src\Plato.TestHarness\Plato.TestHarness.csproj", "{05178A78-6BDC-4291-9DA1-C97E9B9D4390}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Serializers", "src\Plato.Serializers\Plato.Serializers.csproj", "{C57622C5-8704-4701-B5AD-4507390467E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging", "src\Plato.Messaging\Plato.Messaging.csproj", "{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Configuration", "src\Plato.Configuration\Plato.Configuration.csproj", "{F292E483-BDB5-49FD-9CB6-C68C37D44479}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,14 @@ Global
 		{C57622C5-8704-4701-B5AD-4507390467E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C57622C5-8704-4701-B5AD-4507390467E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C57622C5-8704-4701-B5AD-4507390467E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{7BDD9BF5-92C1-4093-9C74-46F42D2094CA} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{05178A78-6BDC-4291-9DA1-C97E9B9D4390} = {81D2A775-A462-421D-8D3D-4FDF16C2425B}
 		{C57622C5-8704-4701-B5AD-4507390467E9} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{F292E483-BDB5-49FD-9CB6-C68C37D44479} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E762F8-B6A5-4940-BAC1-4DF4207C9583}

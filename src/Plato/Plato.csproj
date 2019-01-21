@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Plato.NET.licenseheader" Link="Plato.NET.licenseheader" />
+    <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
   </ItemGroup>
 
 </Project>
