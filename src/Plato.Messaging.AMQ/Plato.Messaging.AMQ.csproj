@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Apache.NMS.ActiveMQ.NetCore" Version="1.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
+    <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
+    <ProjectReference Include="..\Plato.Messaging\Plato.Messaging.csproj" />
+    <ProjectReference Include="..\Plato\Plato.csproj" />
+  </ItemGroup>
+
+</Project>

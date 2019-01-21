@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging", "src\Plat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Configuration", "src\Plato.Configuration\Plato.Configuration.csproj", "{F292E483-BDB5-49FD-9CB6-C68C37D44479}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.RMQ", "src\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj", "{114413B4-40E6-479B-AB1E-C040B2C14662}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.AMQ", "src\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj", "{93906F63-8867-4829-92F7-205D8A64116C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,14 @@ Global
 		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F292E483-BDB5-49FD-9CB6-C68C37D44479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114413B4-40E6-479B-AB1E-C040B2C14662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114413B4-40E6-479B-AB1E-C040B2C14662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114413B4-40E6-479B-AB1E-C040B2C14662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114413B4-40E6-479B-AB1E-C040B2C14662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93906F63-8867-4829-92F7-205D8A64116C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93906F63-8867-4829-92F7-205D8A64116C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93906F63-8867-4829-92F7-205D8A64116C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93906F63-8867-4829-92F7-205D8A64116C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +92,8 @@ Global
 		{C57622C5-8704-4701-B5AD-4507390467E9} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{C9174D98-9D8A-41DD-B8BD-580B6BEF8660} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{F292E483-BDB5-49FD-9CB6-C68C37D44479} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{114413B4-40E6-479B-AB1E-C040B2C14662} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{93906F63-8867-4829-92F7-205D8A64116C} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E762F8-B6A5-4940-BAC1-4DF4207C9583}
