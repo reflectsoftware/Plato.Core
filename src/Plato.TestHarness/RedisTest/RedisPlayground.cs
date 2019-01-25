@@ -541,7 +541,7 @@ namespace Plato.TestHarness.RedisTest
             string connectionStrings = "localhost:6379,abortConnect=False";
 
             try
-            {             
+            {                
                 using (var redisConnection = new RedisConnection(connectionStrings))
                 {
                     //var d = new RedisDictionary<string, Crap>(redisConnection.GetDatabase(), "test", new JsonRedisSerializer()); // new MsgPackRedisSerializer());       
@@ -601,6 +601,8 @@ namespace Plato.TestHarness.RedisTest
                     //Test1(redisConnection);
                     //sTest3(redisConnection);
                 }
+
+                await Task.CompletedTask;
             }
             catch (Exception ex)
             {

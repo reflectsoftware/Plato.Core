@@ -23,6 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="AMQSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
