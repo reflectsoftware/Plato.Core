@@ -6,12 +6,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Plato.Async\Plato.Async.csproj" />
     <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
+    <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
+    <ProjectReference Include="..\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj" />
+    <ProjectReference Include="..\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj" />
+    <ProjectReference Include="..\Plato.Messaging\Plato.Messaging.csproj" />
     <ProjectReference Include="..\Plato.Redis\Plato.Redis.csproj" />
+    <ProjectReference Include="..\Plato.Security\Plato.Security.csproj" />
+    <ProjectReference Include="..\Plato.Serializers\Plato.Serializers.csproj" />
+    <ProjectReference Include="..\Plato\Plato.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AMQSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AppSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

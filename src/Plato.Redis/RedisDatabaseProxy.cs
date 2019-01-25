@@ -88,7 +88,7 @@ namespace Plato.Redis
                                     }
                                 }
                             }
-                        });
+                        }).Wait();
                     }
 
                     if (exception != null)

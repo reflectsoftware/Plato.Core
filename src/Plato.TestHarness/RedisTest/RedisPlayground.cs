@@ -151,19 +151,19 @@ namespace Plato.TestHarness.RedisTest
                             }
 
                             Console.WriteLine($"count: {count++} -------------------------------------");
-                            System.Threading.Thread.Sleep(500);
+                            Thread.Sleep(500);
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine($"XXX - {ex.GetType().Name} - {ex.Message}");
-                            System.Threading.Thread.Sleep(2000);
+                            Thread.Sleep(2000);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"XXX - {ex.GetType().Name} - {ex.Message}");
-                    System.Threading.Thread.Sleep(2000);
+                    Thread.Sleep(2000);
                 }
             }
         }
@@ -544,20 +544,18 @@ namespace Plato.TestHarness.RedisTest
             {             
                 using (var redisConnection = new RedisConnection(connectionStrings))
                 {
-                    var d = new RedisDictionary<string, Crap>(redisConnection.GetDatabase(), "test", new JsonRedisSerializer()); // new MsgPackRedisSerializer());       
+                    //var d = new RedisDictionary<string, Crap>(redisConnection.GetDatabase(), "test", new JsonRedisSerializer()); // new MsgPackRedisSerializer());       
 
-                    var dtest = new Dictionary<int, string>();
-                    dtest.Add(1, "Ross");
-                    dtest.Add(2, "Tammy");
+                    //var dtest = new Dictionary<int, string>();
+                    //dtest.Add(1, "Ross");
+                    //dtest.Add(2, "Tammy");
 
-                    var v1 = await GetAsync(d, "age", name => 2);
-                    await SetAsync(d, "age", (v1 + 2));
-                    v1 = await GetAsync(d, "age", name => 3);
+                    //var v1 = await GetAsync(d, "age", name => 2);
+                    //await SetAsync(d, "age", (v1 + 2));
+                    //v1 = await GetAsync(d, "age", name => 3);
 
-                    var v2 = await GetAsync(d, "dtest", name => dtest);                    
-                    v2 = await GetAsync(d, "dtest", name => dtest);
-                    
-
+                    //var v2 = await GetAsync(d, "dtest", name => dtest);                    
+                    //v2 = await GetAsync(d, "dtest", name => dtest);
 
                     ////var v1 = await GetAsync(d, "age", name => (decimal)2);
                     ////await SetAsync(d, "age", (v1 + 2));
@@ -565,44 +563,43 @@ namespace Plato.TestHarness.RedisTest
 
                     //return;
 
-                    var lockAcquisition = new RedisCacheKeyLockAcquisition();
-                    var cacheContainer = new StringRedisCacheContainer(redisConnection, "RedisCache"); // new HashRedisCacheContainer(redisConnection);
-                    var cacheSeriizer = new MsgPackRedisSerializer(); // new JsonRedisSerializer();
-                    var cache = new RedisCache(redisConnection, lockAcquisition, cacheContainer, cacheSeriizer);
+                    //var lockAcquisition = new RedisCacheKeyLockAcquisition();
+                    //var cacheContainer = new StringRedisCacheContainer(redisConnection, "RedisCache"); // new HashRedisCacheContainer(redisConnection);
+                    //var cacheSeriizer = new MsgPackRedisSerializer(); // new JsonRedisSerializer();
+                    //var cache = new RedisCache(redisConnection, lockAcquisition, cacheContainer, cacheSeriizer);
 
-                    var xxx = await cache.GetAsync("app:app:00000000-0000-0000-0000-0000000000a1", async (name, args) =>
-                    {
-                        var app = new AppEntity
-                        {
-                            AppId = Guid.NewGuid(),
-                            CreatedDateTime = DateTime.Now,
-                            ModifiedDateTime = DateTime.Now,
-                            Description = "Hello",
-                            Enabled = true,
-                            Name = "test",
-                            TenantId = Guid.Empty,
-                        };
+                    //var xxx = await cache.GetAsync("test", async (name, args) =>
+                    //{
+                    //    var app = new AppEntity
+                    //    {
+                    //        AppId = Guid.NewGuid(),
+                    //        CreatedDateTime = DateTime.Now,
+                    //        ModifiedDateTime = DateTime.Now,
+                    //        Description = "Hello",
+                    //        Enabled = true,
+                    //        Name = "test",
+                    //        TenantId = Guid.Empty,
+                    //    };
 
-                        await Task.Delay(0);
+                    //    await Task.Delay(0);
 
-                        return new CacheDataInfo<AppEntity>
-                        {
-                            KeepAlive = TimeSpan.FromHours(1),
-                            NewCacheData = app, //"Hello, Ross"
-                        };
+                    //    return new CacheDataInfo<AppEntity>
+                    //    {
+                    //        KeepAlive = TimeSpan.FromHours(1),
+                    //        NewCacheData = app, //"Hello, Ross"
+                    //    };
 
-                        // return (CacheDataInfo<string>)null;
-                    });
+                    //    // return (CacheDataInfo<string>)null;
+                    //});
 
-                    // cache.Remove("test");
-
+                    //await cache.RemoveAsync("test");
 
                     //CacheThreadTest(redisConnection);
                     //LockThreadTest(redisConnection);
                     //SerializerTests(redisConnection);
                     //Test4(redisConnection);
                     //Test1(redisConnection);
-                    //Test3(redisConnection);
+                    //sTest3(redisConnection);
                 }
             }
             catch (Exception ex)

@@ -39,7 +39,7 @@ namespace Plato.Configuration
             }
             else
             {
-                using (var configContainer = new ConfigContainer(configPath, "./rmqSettings"))
+                using (var configContainer = new ConfigContainer(configPath))
                 {
                     var cc = configContainer.Node;
                     NodeAttributes = ConfigHelper.GetNodeChildAttributes(cc, ".");
