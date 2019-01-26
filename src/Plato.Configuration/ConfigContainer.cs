@@ -188,22 +188,6 @@ namespace Plato.Configuration
         }
 
         /// <summary>
-        /// Logs the exception.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
-        private static void LogException(Exception ex)
-        {
-            try
-            {
-                //  TODO:                 
-            }
-            catch (Exception)
-            {
-                // swallow, just in case event logs are full or access denied. 
-            }
-        }
-
-        /// <summary>
         /// Loads the section.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
@@ -211,7 +195,7 @@ namespace Plato.Configuration
         /// <returns></returns>
         private static XmlNode LoadSection(string fileName, string sectionName)
         {
-            if (fileName == null)
+            if (string.IsNullOrWhiteSpace(fileName))
             {
                 return null;
             }
@@ -245,39 +229,26 @@ namespace Plato.Configuration
                     xmlData = _xmlDefault;
                     break;
                 }
-                catch (IOException ex)
+                catch (IOException)
                 {
                     attemps--;
                     if (attemps < 0)
-                    {
-                        xmlData = _xmlDefault;
-                        LogException(ex);
-                        break;
+                    {                        
+                        throw;                        
                     }
 
                     Thread.Sleep(100);
                 }
-                catch (Exception ex)
-                {
-                    xmlData = _xmlDefault;
-                    LogException(ex);
-                    break;
+                catch (Exception)
+                {                    
+                    throw;
                 }
             }
 
-            try
-            {
-                var xDoc = new XmlDocument() { PreserveWhitespace = true };
-                xDoc.LoadXml(xmlData);
+            var xDoc = new XmlDocument() { PreserveWhitespace = true };
+            xDoc.LoadXml(xmlData);
 
-                return xDoc.SelectSingleNode(sectionName);
-            }
-            catch (Exception ex)
-            {
-                LogException(ex);
-            }
-
-            return null;
+            return xDoc.SelectSingleNode(sectionName);
         }
 
         /// <summary>

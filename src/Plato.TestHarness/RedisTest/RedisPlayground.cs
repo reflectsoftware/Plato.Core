@@ -599,7 +599,7 @@ namespace Plato.TestHarness.RedisTest
                     //SerializerTests(redisConnection);
                     //Test4(redisConnection);
                     //Test1(redisConnection);
-                    //sTest3(redisConnection);
+                    //Test3(redisConnection);
                 }
 
                 await Task.CompletedTask;

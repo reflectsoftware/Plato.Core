@@ -268,12 +268,16 @@ namespace Plato.TestHarness.Messaging
         {
             // await ProducerPerformanceTestAsync();
             // await ProducerAsync();
-            // await ConsumerAsync();
+            await ConsumerAsync();
 
-            await PoolTestAsync();
-            // PoolTest();
+            // await PoolTestAsync();
 
             await Task.Delay(0);
+        }
+
+        static public void Run()
+        {
+            PoolTest();
         }
     }
 }
