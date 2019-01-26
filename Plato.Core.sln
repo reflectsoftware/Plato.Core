@@ -21,19 +21,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Async", "src\Plato.As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Redis", "src\Plato.Redis\Plato.Redis.csproj", "{7BDD9BF5-92C1-4093-9C74-46F42D2094CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.TestHarness", "src\Plato.TestHarness\Plato.TestHarness.csproj", "{05178A78-6BDC-4291-9DA1-C97E9B9D4390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.TestHarness", "src\Plato.TestHarness\Plato.TestHarness.csproj", "{05178A78-6BDC-4291-9DA1-C97E9B9D4390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Serializers", "src\Plato.Serializers\Plato.Serializers.csproj", "{C57622C5-8704-4701-B5AD-4507390467E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Serializers", "src\Plato.Serializers\Plato.Serializers.csproj", "{C57622C5-8704-4701-B5AD-4507390467E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging", "src\Plato.Messaging\Plato.Messaging.csproj", "{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Messaging", "src\Plato.Messaging\Plato.Messaging.csproj", "{C9174D98-9D8A-41DD-B8BD-580B6BEF8660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Configuration", "src\Plato.Configuration\Plato.Configuration.csproj", "{F292E483-BDB5-49FD-9CB6-C68C37D44479}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Configuration", "src\Plato.Configuration\Plato.Configuration.csproj", "{F292E483-BDB5-49FD-9CB6-C68C37D44479}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.RMQ", "src\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj", "{114413B4-40E6-479B-AB1E-C040B2C14662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Messaging.RMQ", "src\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj", "{114413B4-40E6-479B-AB1E-C040B2C14662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Messaging.AMQ", "src\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj", "{93906F63-8867-4829-92F7-205D8A64116C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Messaging.AMQ", "src\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj", "{93906F63-8867-4829-92F7-205D8A64116C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Security", "src\Plato.Security\Plato.Security.csproj", "{A4872741-6AFE-4978-8E7A-B2004837AC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Security", "src\Plato.Security\Plato.Security.csproj", "{A4872741-6AFE-4978-8E7A-B2004837AC8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

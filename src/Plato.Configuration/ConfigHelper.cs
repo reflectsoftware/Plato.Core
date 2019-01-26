@@ -3,6 +3,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Plato.Configuration.Interfaces;
+using System.Reflection;
 
 namespace Plato.Configuration
 {
@@ -17,8 +18,8 @@ namespace Plato.Configuration
         /// <returns></returns>
         public static string GetRootConfigFile()
         {
-            // TODO:
-            return null;
+            var assemblyName = Assembly.GetEntryAssembly()?.ManifestModule?.Name ?? "none";
+            return $"{assemblyName}.config";
         }
 
         /// <summary>

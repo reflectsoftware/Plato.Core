@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Plato.TestHarness.Messenging
+namespace Plato.TestHarness.Messaging
 {
     public class AMQPlayground
     {

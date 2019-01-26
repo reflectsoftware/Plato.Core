@@ -1,4 +1,6 @@
-﻿namespace Plato.TestHarness
+﻿using Plato.Configuration;
+
+namespace Plato.TestHarness
 {
     class Program
     {
@@ -9,7 +11,9 @@
             // Test Redis
 
             // ConfigurationTest.ConfigurationPlayground.RunAsync().GetAwaiter();
-            RedisTest.RedisPlayground.RunAsync().GetAwaiter();
+            // RedisTest.RedisPlayground.RunAsync().GetAwaiter();     
+            // Messaging.RMQPlayground.RunAsync().GetAwaiter();
+            Messaging.RMQPlayground.Run();
         }
     }
 }

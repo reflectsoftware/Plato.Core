@@ -135,7 +135,7 @@ namespace Plato.Cache
                 {
                     foreach (T poolObject in _objectPool)
                     {
-                        _objectPool.DisposeObject();
+                        poolObject.DisposeObject();
                     }
 
                     _objectPool.Clear();

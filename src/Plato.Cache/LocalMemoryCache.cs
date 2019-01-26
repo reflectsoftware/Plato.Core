@@ -77,11 +77,8 @@ namespace Plato.Cache
                         Disposed = true;
                         GC.SuppressFinalize(this);
 
-                        if (Data != null)
-                        {
-                            Data.DisposeObject();
-                            Data = null;
-                        }
+                        Data?.DisposeObject();
+                        Data = null;
                     }
                 }
             }
@@ -402,7 +399,7 @@ namespace Plato.Cache
                     }
                     finally
                     {
-                        rLock.ExitWriteLock();
+                      rLock.ExitWriteLock();
                     }
                 }
             }
