@@ -1,11 +1,11 @@
-# Plato.Core  [![Documentation](https://img.shields.io/badge/docs-wiki-yellow.svg)](https://github.com/reflectsoftware/Plato.Core/wiki) [![Stars](https://img.shields.io/github/stars/reflectsoftware/Plato.Core.svg)](https://github.com/reflectsoftware/Plato.Code/stargazers) 
+# Plato.NetCore  [![Documentation](https://img.shields.io/badge/docs-wiki-yellow.svg)](https://github.com/reflectsoftware/Plato.NetCore/wiki) [![Stars](https://img.shields.io/github/stars/reflectsoftware/Plato.NetCore.svg)](https://github.com/reflectsoftware/Plato.Code/stargazers) 
 
 **Platforms** - .NET Core 2.1 or higher
 
 ## Build Status
 
 
-### What is Plato.Core?
+### What is Plato.NetCore?
 
 Making .NET Core apps awesome!
 
@@ -13,23 +13,23 @@ Making .NET Core apps awesome!
 
 Package name  | .NET Core
 ------------- | ---------------
-[Plato](http://www.nuget.org/packages/Plato.Core/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.svg?style=flat)](http://www.nuget.org/packages/Plato.Core/) 
-[Plato.Async](http://www.nuget.org/packages/Plato.Core.Async/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Async.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Async/)
-[Plato.Cache](http://www.nuget.org/packages/Plato.Core.Cache/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Cache.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Cache/)
-[Plato.Configuration](http://www.nuget.org/packages/Plato.Core.Configuration/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Configuration.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Configuration/)
-[Plato.Messaging](http://www.nuget.org/packages/Plato.Core.Messaging/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Messaging.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Messaging/)
-[Plato.Messaging.AMQ](http://www.nuget.org/packages/Plato.Core.Messaging.AMQ/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Messaging.Core.AMQ.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Messaging.AMQ/)
-[Plato.Messaging.RMQ](http://www.nuget.org/packages/Plato.Core.Messaging.RMQ/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Messaging.Core.RMQ.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Messaging.RMQ/)
-[Plato.Redis](http://www.nuget.org/packages/Plato.Core.Redis/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Redis.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Redis/)
-[Plato.Security](http://www.nuget.org/packages/Plato.Core.Security/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Security.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Security/)
-[Plato.Serializers](http://www.nuget.org/packages/Plato.Core.Serializers/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Core.Serializers.svg?style=flat)](http://www.nuget.org/packages/Plato.Core.Serializers/)
+[Plato](http://www.nuget.org/packages/Plato.NetCore/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore/) 
+[Plato.Async](http://www.nuget.org/packages/Plato.NetCore.Async/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Async.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Async/)
+[Plato.Cache](http://www.nuget.org/packages/Plato.NetCore.Cache/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Cache.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Cache/)
+[Plato.Configuration](http://www.nuget.org/packages/Plato.NetCore.Configuration/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Configuration.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Configuration/)
+[Plato.Messaging](http://www.nuget.org/packages/Plato.NetCore.Messaging/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Messaging.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Messaging/)
+[Plato.Messaging.AMQ](http://www.nuget.org/packages/Plato.NetCore.Messaging.AMQ/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Messaging.NetCore.AMQ.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Messaging.AMQ/)
+[Plato.Messaging.RMQ](http://www.nuget.org/packages/Plato.NetCore.Messaging.RMQ/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.Messaging.NetCore.RMQ.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Messaging.RMQ/)
+[Plato.Redis](http://www.nuget.org/packages/Plato.NetCore.Redis/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Redis.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Redis/)
+[Plato.Security](http://www.nuget.org/packages/Plato.NetCore.Security/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Security.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Security/)
+[Plato.Serializers](http://www.nuget.org/packages/Plato.NetCore.Serializers/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Serializers.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Serializers/)
 
 ### Getting Started
 
 
-If you want Plato.Core, just open up Visual Studio 2017 and search "Plato.Core" in the Extension Manager.
+If you want Plato.NetCore, just open up Visual Studio 2017 and search "Plato.NetCore" in the Extension Manager.
 
-After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.Core/wiki) and get started.
+After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.NetCore/wiki) and get started.
 
 
 ### Additional Resources
