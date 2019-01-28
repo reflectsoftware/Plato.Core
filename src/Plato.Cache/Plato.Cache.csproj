@@ -13,8 +13,7 @@
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>plato.core dotnetcore netcore dotnet</PackageTags>
-    <Description>Plato.Cache .NET Core library</Description>
-    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>    
+    <Description>Plato.Cache .NET Core library</Description>    
   </PropertyGroup>
 
   <ItemGroup>

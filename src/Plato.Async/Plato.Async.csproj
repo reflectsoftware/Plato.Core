@@ -14,7 +14,7 @@
     <RepositoryType></RepositoryType>
     <PackageTags>plato.core dotnetcore netcore dotnet</PackageTags>
     <Description>Plato.Async .NET Core library</Description>
-    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>    
+    <PackageLicenseUrl></PackageLicenseUrl>    
   </PropertyGroup>
 
   <ItemGroup>

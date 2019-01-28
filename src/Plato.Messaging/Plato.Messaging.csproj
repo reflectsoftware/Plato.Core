@@ -13,8 +13,7 @@
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>plato.core dotnetcore netcore dotnet Messaging</PackageTags>
-    <Description>Plato.Messaging .NET Core library</Description>
-    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>
+    <Description>Plato.Messaging .NET Core library</Description>    
   </PropertyGroup>
 
   <ItemGroup>
