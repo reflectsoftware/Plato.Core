@@ -4,6 +4,10 @@
 
 ## Build Status
 
+Branch  |  Build Status
+------------- | ---------------
+master | [![Build status](https://dev.azure.com/reflectsoftware/Open%20Source%20Projects/_apis/build/status/Plato.Core%20CI%20(designer)?branchName=master)](https://dev.azure.com/reflectsoftware/Open%20Source%20Projects/_build/latest?definitionId=14?branchName=master)
+develop | [![Build Status](https://dev.azure.com/reflectsoftware/Open%20Source%20Projects/_apis/build/status/Plato.Core%20CI%20(designer)?branchName=develop)](https://dev.azure.com/reflectsoftware/Open%20Source%20Projects/_build/latest?definitionId=14?branchName=develop)
 
 ### What is Plato.NetCore?
 
