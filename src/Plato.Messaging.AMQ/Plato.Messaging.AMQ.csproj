@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Ross Pellegrino</Authors>
+    <Authors>ReflectSoftware Inc.</Authors>
     <Company>ReflectSoftware Inc.</Company>
     <Product>ReflectSoftware reusable common libraries.</Product>
     <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
@@ -12,8 +12,8 @@
     <PackageIconUrl>http://reflectsoftware.com/images/Plato.Core.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
-    <PackageTags>plato.core redis RabbitMQ ActiveMQ</PackageTags>
-    <Description>Plato deployment package</Description>
+    <PackageTags>plato.core dotnetcore netcore dotnet ActiveMQ Messaging</PackageTags>
+    <Description>Plato.Messaging.ActiveMQ .NET Core library</Description>
   </PropertyGroup>
 
   <ItemGroup>
