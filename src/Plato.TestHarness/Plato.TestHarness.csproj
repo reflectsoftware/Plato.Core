@@ -8,8 +8,9 @@
     <Product>Plato.Core Test Harness</Product>
     <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
     <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/reflectsoftware/Plato.Core.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/assets/Plato.core.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
