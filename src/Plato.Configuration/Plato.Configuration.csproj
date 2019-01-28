@@ -9,7 +9,7 @@
     <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
     <PackageId>Plato.NetCore.Configuration</PackageId>    
     <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/assets/Plato.core.png</PackageIconUrl>
+    <PackageIconUrl>https://reflectsoftware.com/images/Plato.Core-256.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>plato.core dotnetcore netcore dotnet</PackageTags>
