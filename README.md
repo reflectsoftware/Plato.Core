@@ -1,4 +1,4 @@
-# Plato.NetCore  [![Documentation](https://img.shields.io/badge/docs-wiki-yellow.svg)](https://github.com/reflectsoftware/Plato.NetCore/wiki) [![Stars](https://img.shields.io/github/stars/reflectsoftware/Plato.NetCore.svg)](https://github.com/reflectsoftware/Plato.Code/stargazers) 
+# Plato.NetCore  [![Documentation](https://img.shields.io/badge/docs-wiki-yellow.svg)](https://github.com/reflectsoftware/Plato.Core/wiki) [![Stars](https://img.shields.io/github/stars/reflectsoftware/Plato.Core.svg)](https://github.com/reflectsoftware/Plato.Core/stargazers) 
 
 **Platforms** - .NET Core 2.1 or higher
 
@@ -30,7 +30,6 @@ Package name  | .NET Core
 
 ### Getting Started
 
-
 If you want Plato.NetCore, just open up Visual Studio 2017 and search "Plato.NetCore" in the Extension Manager.
 
 After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.NetCore/wiki) and get started.
@@ -40,4 +39,4 @@ After you create a project, head to our [documentation wiki](https://github.com/
 
 [Contact Support](support@reflectsoftware.com)
 
-[ReflectSoftware Website](http://reflectsoftware.com)
+[ReflectSoftware Website](https://reflectsoftware.com)
