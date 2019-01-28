@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Solution Items", "01. Solution Items", "{83BAC6DB-AF54-4978-A70F-D84761E606E1}"
 	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
 		src\Plato.Core.licenseheader = src\Plato.Core.licenseheader
 		README.md = README.md
 	EndProjectSection
