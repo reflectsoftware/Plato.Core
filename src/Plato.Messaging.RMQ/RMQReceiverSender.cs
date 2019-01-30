@@ -11,10 +11,6 @@ using System;
 
 namespace Plato.Messaging.RMQ
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <seealso cref="Plato.Messaging.Interfaces.IMessageReceiverSender" />
     public abstract class RMQReceiverSender : IMessageReceiverSender
     {
         protected static TimeoutException _TimeoutException;

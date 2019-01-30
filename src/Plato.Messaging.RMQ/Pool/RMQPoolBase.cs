@@ -18,14 +18,12 @@ namespace Plato.Messaging.RMQ.Pool
     /// <seealso cref="System.IDisposable" />
     public abstract class RMQPoolBase : IDisposable
     {
-        #region declarations
         protected class ConfigStates
         {
             public RMQConnectionSettings Connection { get; set; }
             public RMQQueueSettings Destination { get; set; }
             public RMQExchangeSettings Exchange { get; set; }
         }
-        #endregion declarations
 
         private bool _disposed;        
         protected readonly int _maxGrowSize;
