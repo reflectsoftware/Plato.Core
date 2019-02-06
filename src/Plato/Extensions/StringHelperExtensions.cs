@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Plato.Extensions
@@ -87,6 +88,25 @@ namespace Plato.Extensions
         public static bool IsValidIPAddress(string address)
         {
             return new Regex(@"\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b").IsMatch(address);
+        }
+
+        /// <summary>
+        /// Determines the parameter path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
+        public static string DetermineParameterPath(this string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+
+            path = path.Replace("$(workingdir)", AppDomain.CurrentDomain.BaseDirectory);
+            path = path.Replace("$(mydocuments)", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            path = path.Replace(@"\\", @"\");
+
+            return Path.GetFullPath(Environment.ExpandEnvironmentVariables(path));
         }
 
         /// <summary>
