@@ -19,7 +19,6 @@ namespace Plato.Miscellaneous
         /// <param name="recycleNumber">The recycle number.</param>
         /// <param name="forceDirectoryCreation">if set to <c>true</c> [force directory creation].</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public ILogTextFileWriter Create(string fileName, int recycleNumber, bool forceDirectoryCreation)
         {
             return new LogTextFileWriter(fileName, recycleNumber, forceDirectoryCreation);
