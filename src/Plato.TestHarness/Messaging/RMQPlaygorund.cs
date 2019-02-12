@@ -23,7 +23,7 @@ namespace Plato.TestHarness.Messaging
         {
             var connectionSettings = new RMQConnectionSettings
             {
-                Name = "defaultConnection",
+                Name = "connection",
                 Username = "local-dev-user",
                 Password = "local-dev-user",
                 VirtualHost = "local-dev-vh",
@@ -52,7 +52,7 @@ namespace Plato.TestHarness.Messaging
 
             var configManager = CreateConfigurationManager();            
             var procuderFactory = new RMQProducerFactory(new RMQConnectionFactory());
-            var connectionSettings = configManager.GetConnectionSettings("defaultConnection");
+            var connectionSettings = configManager.GetConnectionSettings("connection");
             var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args); 
 
             using (var producer = procuderFactory.CreateText(connectionSettings, queueSettings))
@@ -76,7 +76,7 @@ namespace Plato.TestHarness.Messaging
 
             var configManager = CreateConfigurationManager();            
             var procuderFactory = new RMQProducerFactory(new RMQConnectionFactory());
-            var connectionSettings = configManager.GetConnectionSettings("defaultConnection");
+            var connectionSettings = configManager.GetConnectionSettings("connection");
             var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args);
 
             using (var producer = procuderFactory.CreateText(connectionSettings, queueSettings))
@@ -136,7 +136,7 @@ namespace Plato.TestHarness.Messaging
 
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
-            var connectionSettings = configManager.GetConnectionSettings("defaultConnection");
+            var connectionSettings = configManager.GetConnectionSettings("connection");
             var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args);
 
             using (var consumer = consumerFactory.CreateText(connectionSettings, queueSettings))
@@ -226,7 +226,7 @@ namespace Plato.TestHarness.Messaging
                         {
                             for (var j = 0; j < 10; j++)
                             {
-                                using (var producer = await amqPool.GetAsync<IRMQProducerText>("defaultConnection", "MY_RMQ_TEST", queueArgs: args))
+                                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
                                 {
                                     var message = $"message: {i * j}";
                                     await producer.Instance.SendAsync(message);
@@ -267,7 +267,7 @@ namespace Plato.TestHarness.Messaging
             {
                 for (var j = 0; j < 10; j++)
                 {
-                    using (var producer = rmqPoolCache.Get<IRMQProducerText>("defaultConnection", "MY_RMQ_TEST", queueArgs: args))
+                    using (var producer = rmqPoolCache.Get<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
                     {
                         var message = $"message: {i * j}";
                         producer.Instance.Send(message);
@@ -326,7 +326,7 @@ namespace Plato.TestHarness.Messaging
 
             using (var rmqPool = new RMQPool(configManager, factory, 5))
             {
-                using (var producer = rmqPool.Get<IRMQProducerText>("defaultConnection", "MY_RMQ_TEST", queueArgs: args))
+                using (var producer = rmqPool.Get<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
                 {
                     producer.Instance.Send("Simple test");
                 }
@@ -350,7 +350,7 @@ namespace Plato.TestHarness.Messaging
 
             using (var amqPool = new RMQPoolAsync(configManager, factory, 5))
             {
-                using (var producer = await amqPool.GetAsync<IRMQProducerText>("defaultConnection", "MY_RMQ_TEST", queueArgs: args))
+                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
                 {
                     await producer.Instance.SendAsync("Simple test");
                 }
@@ -366,7 +366,7 @@ namespace Plato.TestHarness.Messaging
             //await ConsumerAsync();
 
             // await PoolTestAsync();
-            // await SimplePoolTestAsync();
+            await SimplePoolTestAsync();
 
             await Task.Delay(0);
         }
