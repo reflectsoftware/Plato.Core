@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
     <PackageIconUrl>https://reflectsoftware.com/images/Plato.Core-256.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/reflectsoftware/Plato.Core/blob/master/LICENSE</PackageLicenseUrl>    
   </PropertyGroup>
 
   <ItemGroup>
