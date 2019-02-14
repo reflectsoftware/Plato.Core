@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="AMQSettings.config" />
+    <Content Remove="app.config" />
+    <Content Remove="AppSettings.config" />
+    <Content Remove="RMQSettings.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="AMQSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="app.config" />
+    <None Include="AppSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="RMQSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plato.Async\Plato.Async.csproj" />
+    <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
+    <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
+    <ProjectReference Include="..\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj" />
+    <ProjectReference Include="..\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj" />
+    <ProjectReference Include="..\Plato.Messaging\Plato.Messaging.csproj" />
+    <ProjectReference Include="..\Plato.Redis\Plato.Redis.csproj" />
+    <ProjectReference Include="..\Plato.Security\Plato.Security.csproj" />
+    <ProjectReference Include="..\Plato.Serializers\Plato.Serializers.csproj" />
+    <ProjectReference Include="..\Plato\Plato.csproj" />
+  </ItemGroup>
+
+</Project>
