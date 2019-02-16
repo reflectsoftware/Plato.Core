@@ -231,7 +231,7 @@ namespace Plato.TestHarness.Messaging
                                     var message = $"message: {i * j}";
                                     await producer.Instance.SendAsync(message);
 
-                                    Console.WriteLine($"{producer.PoolId} - {producer.Instance.Id} - {message}");
+                                    Console.WriteLine($"Thread: {Thread.CurrentThread.ManagedThreadId} - {producer.PoolId} - {producer.Instance.Id} - {message}");
                                 }
                             }
                         }
@@ -252,7 +252,7 @@ namespace Plato.TestHarness.Messaging
             }
         }
 
-        static void PoolThreadTest1(object obj)
+        static void PoolThreadTestThread(object obj)
         {
             var rmqPoolCache = ((Tuple<RMQPool, int>)obj).Item1;
             var i = ((Tuple<RMQPool, int>)obj).Item2;
@@ -272,7 +272,7 @@ namespace Plato.TestHarness.Messaging
                         var message = $"message: {i * j}";
                         producer.Instance.Send(message);
 
-                        Console.WriteLine($"{producer.PoolId} - {producer.Instance.Id} - {message}");
+                        Console.WriteLine($"Thread: {Thread.CurrentThread.ManagedThreadId} - {producer.PoolId} - {producer.Instance.Id} - {message}");
                     }
                 }
             }
@@ -286,7 +286,7 @@ namespace Plato.TestHarness.Messaging
             }
         }
 
-        static void PoolTest()
+        static void PoolThreadTest()
         {
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
@@ -295,11 +295,11 @@ namespace Plato.TestHarness.Messaging
             var publisherFactory = new RMQPublisherFactory(new RMQConnectionFactory());           
             var factory = new RMQSenderReceiverFactory(consumerFactory, producerFactory, subscriberFactory, publisherFactory);
 
-            using (var rmqPool = new RMQPool(configManager, factory, 5))
+            using (var rmqPool = new RMQPool(configManager, factory, 2))
             {
-                for (var i = 0; i < 1; i++)
+                for (var i = 0; i < 10; i++)
                 {
-                    var t = new Thread(PoolThreadTest1);
+                    var t = new Thread(PoolThreadTestThread);
                     t.Start(new Tuple<RMQPool, int>(rmqPool, i));
                 }
 
@@ -364,17 +364,16 @@ namespace Plato.TestHarness.Messaging
             //await ProducerPerformanceTestAsync();
             //await ProducerAsync();
             //await ConsumerAsync();
-
-            // await PoolTestAsync();
-            await SimplePoolTestAsync();
+            await PoolTestAsync();
+            //await SimplePoolTestAsync();
 
             await Task.Delay(0);
         }
 
         static public void Run()
         {
-            // PoolTest();
-            SimplePoolTest();
+            // PoolThreadTest();
+            // SimplePoolTest();
         }
     }
 }
