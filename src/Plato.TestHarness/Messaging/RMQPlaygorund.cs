@@ -1,5 +1,6 @@
 ﻿using Plato.Messaging.Enums;
 using Plato.Messaging.Exceptions;
+using Plato.Messaging.Interfaces;
 using Plato.Messaging.RMQ;
 using Plato.Messaging.RMQ.Factories;
 using Plato.Messaging.RMQ.Interfaces;
@@ -24,10 +25,10 @@ namespace Plato.TestHarness.Messaging
             var connectionSettings = new RMQConnectionSettings
             {
                 Name = "connection",
-                Username = "local-dev-user",
-                Password = "local-dev-user",
-                VirtualHost = "local-dev-vh",
-                Uri = "amqp://localhost:5672",
+                Username = "guest",
+                Password = "guest",
+                VirtualHost = "/",
+                Uri = "amqp://host.docker.internal:5672",
                 DelayOnReconnect = 2000,
             };
 
@@ -357,6 +358,30 @@ namespace Plato.TestHarness.Messaging
             }
         }
 
+        static async Task PoolAsyncManagerReadTestAsync()
+        {
+            var configuration = new RMQConfigurationManager();
+            var pool = new RMQPoolFactory().CreateAsyncPool(configuration, 10);
+            var poolManager = new RMQPoolAsyncManager(pool, "connection");
+
+            while (true)
+            {
+                await poolManager.ReadAsync("test", (IMessageReceiveResult<string> message) =>
+                {
+                    return Task.CompletedTask;
+
+                }, msecTimeout: 1000);
+
+                //await poolManager.ReadAsync("lms.activity.item", (IMessageReceiveResult<string> message) =>
+                //{
+                //    return Task.CompletedTask;
+
+                //}, msecTimeout: 1000);
+            }
+
+        }
+
+
         #endregion Pool Test
 
         static public async Task RunAsync()
@@ -364,8 +389,10 @@ namespace Plato.TestHarness.Messaging
             //await ProducerPerformanceTestAsync();
             //await ProducerAsync();
             //await ConsumerAsync();
-            await PoolTestAsync();
+            // await PoolTestAsync();
             //await SimplePoolTestAsync();
+
+            await PoolAsyncManagerReadTestAsync();
 
             await Task.Delay(0);
         }
