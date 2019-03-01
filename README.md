@@ -18,6 +18,7 @@ Making .NET Core apps awesome!
 Package name  | .NET Core
 ------------- | ---------------
 [Plato](http://www.nuget.org/packages/Plato.NetCore/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore/) 
+[Plato.Autofac](http://www.nuget.org/packages/Plato.NetCore.Autofac/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Autofac.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Autofac/)
 [Plato.Async](http://www.nuget.org/packages/Plato.NetCore.Async/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Async.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Async/)
 [Plato.Cache](http://www.nuget.org/packages/Plato.NetCore.Cache/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Cache.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Cache/)
 [Plato.Configuration](http://www.nuget.org/packages/Plato.NetCore.Configuration/) | [![NuGet Version](http://img.shields.io/nuget/v/Plato.NetCore.Configuration.svg?style=flat)](http://www.nuget.org/packages/Plato.NetCore.Configuration/)
@@ -30,7 +31,7 @@ Package name  | .NET Core
 
 ### Getting Started
 
-If you want Plato.NetCore, just open up Visual Studio 2017 and search "Plato.NetCore" in the Extension Manager.
+If you want Plato.NetCore, just open up Visual Studio 2019 and search "Plato.NetCore" in the Extension Manager.
 
 After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.NetCore/wiki) and get started.
 
