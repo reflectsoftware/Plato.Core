@@ -1,4 +1,5 @@
-﻿namespace Plato.TestHarness
+﻿
+namespace Plato.TestHarness
 {
     class Program
     {

@@ -17,12 +17,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="1.0.2" />
     <PackageReference Include="Nito.AsyncEx.Tasks" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plato.Autofac\Plato.Autofac.csproj" />
   </ItemGroup>
 
 </Project>

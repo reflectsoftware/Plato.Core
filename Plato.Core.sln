@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Messaging.AMQ", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Security", "src\Plato.Security\Plato.Security.csproj", "{A4872741-6AFE-4978-8E7A-B2004837AC8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.WebTestHarness", "src\Plato.WebTestHarness\Plato.WebTestHarness.csproj", "{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.WebTestHarness", "src\Plato.WebTestHarness\Plato.WebTestHarness.csproj", "{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Autofac", "src\Plato.Autofac\Plato.Autofac.csproj", "{89BD0105-BAE9-4FAD-A79E-01972883A822}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{93906F63-8867-4829-92F7-205D8A64116C} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{A4872741-6AFE-4978-8E7A-B2004837AC8D} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{7BDEE909-D3FB-4668-9DF4-E07217AE92BE} = {81D2A775-A462-421D-8D3D-4FDF16C2425B}
+		{89BD0105-BAE9-4FAD-A79E-01972883A822} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E762F8-B6A5-4940-BAC1-4DF4207C9583}
