@@ -51,25 +51,10 @@ namespace Plato.TestHarness.Mapper
             var target1 = new MapperTestClass2 { TheName = "Ross", TheAddress = "123 Main" };
 
             var class2a = mapper.Map(class1);
-            var class2b = mapper.Map(class1, (source, target) =>
-            {
-            });
-
-            var class2c = mapper.Map(class1, target1, (source, target) =>
-            {
-            });
 
             // async 
             var class3a = await mapper.MapAsync(class1);
-            var class3b = await mapper.MapAsync(class1, async (source, target) =>
-            {
-                await Task.Delay(0);
-            });
-
-            var class3c = await mapper.MapAsync(class1, target1, async (source, target) =>
-            {
-                await Task.Delay(0);
-            });
+            var class3c = await mapper.MapAsync<MapperTestClass1, MapperTestClass2>(class1, target1);
         }
     }
 }

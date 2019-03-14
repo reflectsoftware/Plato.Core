@@ -20,14 +20,12 @@ namespace Plato.Mapper
         /// <param name="mapper">The mapper.</param>
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static TTarget Map<TSource, TTarget>(this IMapper<TSource, TTarget> mapper, TSource source, TTarget target, Action<TSource, TTarget> action = null)
+        public static TTarget Map<TSource, TTarget>(this IMapper<TSource, TTarget> mapper, TSource source, TTarget target)
             where TSource : class
             where TTarget : class            
         {
-            mapper.Map(source, target);
-            action?.Invoke(source, target);
+            mapper.Map(source, target);            
             return target;
         }
 
@@ -38,14 +36,15 @@ namespace Plato.Mapper
         /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="mapper">The mapper.</param>
         /// <param name="source">The source.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static TTarget Map<TSource, TTarget>(this IMapper<TSource, TTarget> mapper, TSource source, Action<TSource, TTarget> action = null)
+        public static TTarget Map<TSource, TTarget>(this IMapper<TSource, TTarget> mapper, TSource source)
             where TSource : class
             where TTarget : class            
         {
             var target = Activator.CreateInstance<TTarget>();
-            return mapper.Map(source, target, action);
+            mapper.Map(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -56,13 +55,14 @@ namespace Plato.Mapper
         /// <param name="source">The source.</param>
         /// <param name="mapper">The mapper.</param>
         /// <param name="target">The target.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static TTarget Map<TSource, TTarget>(this TSource source, IMapper<TSource, TTarget> mapper, TTarget target, Action<TSource, TTarget> action = null)
+        public static TTarget Map<TSource, TTarget>(this TSource source, IMapper<TSource, TTarget> mapper, TTarget target)
             where TSource : class
             where TTarget : class            
         {
-            return mapper.Map(source, target, action);
+            mapper.Map(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -72,14 +72,15 @@ namespace Plato.Mapper
         /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="mapper">The mapper.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static TTarget Map<TSource, TTarget>(this TSource source, IMapper<TSource, TTarget> mapper, Action<TSource, TTarget> action = null)
+        public static TTarget Map<TSource, TTarget>(this TSource source, IMapper<TSource, TTarget> mapper)
             where TSource : class
             where TTarget : class            
         {
             var target = Activator.CreateInstance<TTarget>();
-            return mapper.Map(source, target, action);
+            mapper.Map(source, target);
+
+            return target;
         }
     }
 
@@ -97,19 +98,12 @@ namespace Plato.Mapper
         /// <param name="mapper">The mapper.</param>
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static async Task<TTarget> MapAsync<TSource, TTarget>(this IMapperAsync<TSource, TTarget> mapper, TSource source, TTarget target, Func<TSource, TTarget, Task> action = null)
+        public static async Task<TTarget> MapAsync<TSource, TTarget>(this IMapperAsync<TSource, TTarget> mapper, TSource source, TTarget target)
             where TSource : class
             where TTarget : class
         {
             await mapper.MapAsync(source, target);
-
-            if (action != null)
-            {
-                await action.Invoke(source, target);
-            }
-
             return target;
         }
 
@@ -120,14 +114,15 @@ namespace Plato.Mapper
         /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="mapper">The mapper.</param>
         /// <param name="source">The source.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static async Task<TTarget> MapAsync<TSource, TTarget>(this IMapperAsync<TSource, TTarget> mapper, TSource source, Func<TSource, TTarget, Task> action = null)
+        public static async Task<TTarget> MapAsync<TSource, TTarget>(this IMapperAsync<TSource, TTarget> mapper, TSource source)
             where TSource : class
             where TTarget : class
         {
             var target = Activator.CreateInstance<TTarget>();
-            return await mapper.MapAsync(source, target, action);
+            await mapper.MapAsync(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -138,13 +133,14 @@ namespace Plato.Mapper
         /// <param name="source">The source.</param>
         /// <param name="mapper">The mapper.</param>
         /// <param name="target">The target.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static async Task<TTarget> MapAsync<TSource, TTarget>(this TSource source, IMapperAsync<TSource, TTarget> mapper, TTarget target, Func<TSource, TTarget, Task> action = null)
+        public static async Task<TTarget> MapAsync<TSource, TTarget>(this TSource source, IMapperAsync<TSource, TTarget> mapper, TTarget target)
             where TSource : class
             where TTarget : class
         {
-            return await mapper.MapAsync(source, target, action);
+            await mapper.MapAsync(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -154,14 +150,15 @@ namespace Plato.Mapper
         /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="source">The source.</param>
         /// <param name="mapper">The mapper.</param>
-        /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static async Task<TTarget> MapAsync<TSource, TTarget>(this TSource source, IMapperAsync<TSource, TTarget> mapper, Func<TSource, TTarget, Task> action = null)
+        public static async Task<TTarget> MapAsync<TSource, TTarget>(this TSource source, IMapperAsync<TSource, TTarget> mapper)
             where TSource : class
             where TTarget : class
         {
             var target = Activator.CreateInstance<TTarget>();
-            return await mapper.MapAsync(source, target, action);
+            await mapper.MapAsync(source, target);
+
+            return target;
         }
     }
 }
