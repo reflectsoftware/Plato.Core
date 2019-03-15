@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plato.Async\Plato.Async.csproj" />
+    <ProjectReference Include="..\Plato.Autofac\Plato.Autofac.csproj" />
     <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
     <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
     <ProjectReference Include="..\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj" />
@@ -42,6 +43,10 @@
     <ProjectReference Include="..\Plato.Security\Plato.Security.csproj" />
     <ProjectReference Include="..\Plato.Serializers\Plato.Serializers.csproj" />
     <ProjectReference Include="..\Plato\Plato.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Playground\" />
   </ItemGroup>
 
 </Project>

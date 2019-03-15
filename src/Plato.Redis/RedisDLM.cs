@@ -14,7 +14,7 @@ namespace Plato.Redis
     /// <summary>
     /// 
     /// </summary>
-    public class RedisCacheKeyLockAcquisition : IRedisCacheKeyLockAcquisition
+    public class RedisDLM : IRedisDLM
     {
         /// <summary>
         /// Acquires the lock.

@@ -9,7 +9,7 @@ using Plato.Cache.Interfaces;
 
 namespace Plato.Redis.Interfaces
 {
-    public interface IRedisCacheKeyLockAcquisition
+    public interface IRedisDLM
     {
         ICacheKeyLock AcquireLock(IDatabase db, RedisKey key, TimeSpan? retryTimeout = null, TimeSpan? expiry = null);
         Task<ICacheKeyLock> AcquireLockAsync(IDatabase db, RedisKey key, TimeSpan? retryTimeout = null, TimeSpan? expiry = null);

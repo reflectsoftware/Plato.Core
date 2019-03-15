@@ -29,8 +29,4 @@
     <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Plato.Autofac\Plato.Autofac.csproj" />
-  </ItemGroup>
-
 </Project>

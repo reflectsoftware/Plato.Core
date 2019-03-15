@@ -21,7 +21,10 @@ namespace Plato.Mapper
             where TSource : class
             where TTarget : class
         {
-            return MapperExtensions.Map((IMapper<TSource, TTarget>)this, source, target);
+            var mapper = (IMapper<TSource, TTarget>)this;
+            mapper.Map(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -35,7 +38,11 @@ namespace Plato.Mapper
             where TSource : class
             where TTarget : class
         {
-            return MapperExtensions.Map((IMapper<TSource, TTarget>)this, source);
+            var target = Activator.CreateInstance<TTarget>();
+            var mapper = (IMapper<TSource, TTarget>)this;
+            mapper.Map(source, target);
+
+            return target;
         }
 
         /// <summary>
@@ -46,12 +53,14 @@ namespace Plato.Mapper
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
         /// <returns></returns>
-        public Task<TTarget> MapAsync<TSource, TTarget>(TSource source, TTarget target)
-                  where TSource : class
-                  where TTarget : class
+        public async Task<TTarget> MapAsync<TSource, TTarget>(TSource source, TTarget target)
+            where TSource : class
+            where TTarget : class
         {
-            return MapperAsyncExtensions.MapAsync((IMapperAsync<TSource, TTarget>)this, source, target);
-        }
+            var mapper = (IMapperAsync<TSource, TTarget>)this;
+            await mapper.MapAsync(source, target);
+            return target;
+        } 
 
         /// <summary>
         /// Maps the asynchronous.
@@ -60,11 +69,15 @@ namespace Plato.Mapper
         /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns></returns>
-        public Task<TTarget> MapAsync<TSource, TTarget>(TSource source)
+        public async Task<TTarget> MapAsync<TSource, TTarget>(TSource source)
             where TSource : class
             where TTarget : class
         {
-            return MapperAsyncExtensions.MapAsync((IMapperAsync<TSource, TTarget>)this, source);
+            var target = Activator.CreateInstance<TTarget>();
+            var mapper = (IMapperAsync<TSource, TTarget>)this;            
+            await mapper.MapAsync(source, target);
+
+            return target;
         }
     }
 }

@@ -310,7 +310,7 @@ namespace Plato.TestHarness.RedisTest
             {
                 var rnd = new Random((int)DateTime.Now.Ticks);
                 var db = redisConnection.GetDatabase();
-                var lockAcquisition = new RedisCacheKeyLockAcquisition();
+                var lockAcquisition = new RedisDLM();
 
                 for (var i = 0; i < 5; i++)
                 {
@@ -364,7 +364,7 @@ namespace Plato.TestHarness.RedisTest
             {
                 var rnd = new Random((int)DateTime.Now.Ticks);
                 var json = File.ReadAllText($"{AppDomain.CurrentDomain.BaseDirectory}sample.json");
-                var lockAcquisition = new RedisCacheKeyLockAcquisition();
+                var lockAcquisition = new RedisDLM();
                 var cache = new RedisCache(redisConnection, lockAcquisition);
 
                 while (!TerminateTestCacheAsync)

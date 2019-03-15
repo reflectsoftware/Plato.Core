@@ -20,12 +20,13 @@ namespace Plato.TestHarness.Mapper
     }
 
     public interface IMyMapper : 
+        IMapperBase,
         IMapper<MapperTestClass1, MapperTestClass2>,
         IMapperAsync<MapperTestClass1, MapperTestClass2>
     {
     }
 
-    public class MyMapper : IMyMapper
+    public class MyMapper : MapperBase, IMyMapper
     {
         public void Map(MapperTestClass1 source, MapperTestClass2 target)
         {
@@ -50,10 +51,10 @@ namespace Plato.TestHarness.Mapper
             var mapper = new MyMapper() as IMyMapper;
             var target1 = new MapperTestClass2 { TheName = "Ross", TheAddress = "123 Main" };
 
-            var class2a = mapper.Map(class1);
+            var class2a = mapper.Map<MapperTestClass1, MapperTestClass2>(class1);
 
             // async 
-            var class3a = await mapper.MapAsync(class1);
+            var class3a = await mapper.MapAsync<MapperTestClass1, MapperTestClass2>(class1);
             var class3c = await mapper.MapAsync<MapperTestClass1, MapperTestClass2>(class1, target1);
         }
     }

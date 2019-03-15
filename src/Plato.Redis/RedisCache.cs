@@ -21,7 +21,7 @@ namespace Plato.Redis
     public class RedisCache : IGlobalCache
     {
         private readonly IRedisConnection _connection;
-        private readonly IRedisCacheKeyLockAcquisition _cacheKeyLockAcquisition;
+        private readonly IRedisDLM _cacheKeyLockAcquisition;
         private readonly IRedisCacheContainer _container;
         private readonly IRedisSerializer _serialier;
         private readonly IDatabase _redisDb;
@@ -43,7 +43,7 @@ namespace Plato.Redis
         /// <param name="serializer">The serializer.</param>
         public RedisCache(
             IRedisConnection connection,
-            IRedisCacheKeyLockAcquisition cacheKeyLockAcquisition,
+            IRedisDLM cacheKeyLockAcquisition,
             IRedisCacheContainer container = null,
             IRedisSerializer serializer = null)
         {
