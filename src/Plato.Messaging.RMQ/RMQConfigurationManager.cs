@@ -68,16 +68,22 @@ namespace Plato.Messaging.RMQ
         public RMQConfigurationManager(
             IEnumerable<RMQConnectionSettings> connections, 
             IEnumerable<RMQExchangeSettings> exchangeSettings = null,
-            IEnumerable<RMQQueueSettings> queueSettings = null)
+            IEnumerable<RMQQueueSettings> queueSettings = null) : this()
         {
-            NodeAttributes = new NodeChildAttributes();
             NodeAttributes.ParentAttributes.NodeName = "rmqSettings";
 
             if (connections != null)
             {
                 foreach (var connection in connections)
                 {
-                    var childNode = new NodeAttributes()
+                    // if an exit node with same name already exist override it,
+                    // otherwise, create a new one
+
+                    var exitingChildNode = NodeAttributes.ChildAttributes
+                        .Where(x => x.NodeName == "connectionSettings" && x.Attributes["name"] == connection.Name)
+                        .FirstOrDefault();
+
+                    var childNode = exitingChildNode ?? new NodeAttributes()
                     {
                         NodeName = "connectionSettings",
                         Attributes = new NameValueCollection()
@@ -90,7 +96,10 @@ namespace Plato.Messaging.RMQ
                     childNode.Attributes["uri"] = connection.Uri;
                     childNode.Attributes["delayOnReconnect"] = connection.DelayOnReconnect.ToString();
 
-                    NodeAttributes.ChildAttributes.Add(childNode);
+                    if (exitingChildNode == null)
+                    {
+                        NodeAttributes.ChildAttributes.Add(childNode);
+                    }
                 }
             }
 
@@ -98,7 +107,11 @@ namespace Plato.Messaging.RMQ
             {
                 foreach (var exchangeSetting in exchangeSettings)
                 {
-                    var childNode = new NodeAttributes()
+                    var exitingChildNode = NodeAttributes.ChildAttributes
+                        .Where(x => x.NodeName == "exchange" && x.Attributes["name"] == exchangeSetting.Name)
+                        .FirstOrDefault();
+
+                    var childNode = exitingChildNode ?? new NodeAttributes()
                     {
                         NodeName = "exchange",
                         Attributes = new NameValueCollection()
@@ -107,9 +120,12 @@ namespace Plato.Messaging.RMQ
                     childNode.Attributes["name"] = exchangeSetting.Name;
                     childNode.Attributes["exchangeName"] = exchangeSetting.ExchangeName;
                     childNode.Attributes["type"] = exchangeSetting.Type;
-                    childNode.Attributes["autoDelete"] = exchangeSetting.AutoDelete ? "true" : "false";                    
+                    childNode.Attributes["autoDelete"] = exchangeSetting.AutoDelete ? "true" : "false";
 
-                    NodeAttributes.ChildAttributes.Add(childNode);
+                    if (exitingChildNode == null)
+                    {
+                        NodeAttributes.ChildAttributes.Add(childNode);
+                    }
                 }
             }
 
@@ -117,7 +133,11 @@ namespace Plato.Messaging.RMQ
             {
                 foreach (var queueSetting in queueSettings)
                 {
-                    var childNode = new NodeAttributes()
+                    var exitingChildNode = NodeAttributes.ChildAttributes
+                        .Where(x => x.NodeName == "queue" && x.Attributes["name"] == queueSetting.Name)
+                        .FirstOrDefault();
+
+                    var childNode = exitingChildNode ?? new NodeAttributes()
                     {
                         NodeName = "queue",
                         Attributes = new NameValueCollection()
@@ -141,9 +161,12 @@ namespace Plato.Messaging.RMQ
                         // remove the extra comma
                         sb.Remove(sb.Length - 1, 1);
                         childNode.Attributes["routingKeys"] = sb.ToString();
-                    }                    
+                    }
 
-                    NodeAttributes.ChildAttributes.Add(childNode);
+                    if (exitingChildNode == null)
+                    {
+                        NodeAttributes.ChildAttributes.Add(childNode);
+                    }
                 }
             }
         }

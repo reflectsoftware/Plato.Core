@@ -8,13 +8,13 @@ namespace Plato.TestHarness
             // ConfigurationTest.ConfigurationPlayground.RunAsync().GetAwaiter();
             // RedisTest.RedisPlayground.RunAsync().GetAwaiter();     
 
-            // Messaging.RMQPlayground.RunAsync().GetAwaiter();
+            Messaging.RMQPlayground.RunAsync().GetAwaiter();
             // Messaging.RMQPlayground.Run();
 
             // Messaging.AMQPlayground.RunAsync().GetAwaiter();
             // Messaging.AMQPlayground.Run();
 
-            Mapper.MapperPlayground.RunAsync().GetAwaiter();
+            // Mapper.MapperPlayground.RunAsync().GetAwaiter();
         }
     }
 }

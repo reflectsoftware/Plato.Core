@@ -392,7 +392,21 @@ namespace Plato.TestHarness.Messaging
             // await PoolTestAsync();
             //await SimplePoolTestAsync();
 
-            await PoolAsyncManagerReadTestAsync();
+            // await PoolAsyncManagerReadTestAsync();
+
+            var rmqConnectionSetting = new RMQConnectionSettings
+            {
+                Name = "connection",
+                Username = "Ross UN",
+                Password = "Ross PW",
+                VirtualHost = "/",
+                DelayOnReconnect = 1500,
+                Uri = "amqp://some-host:5672"
+            };
+
+            var config = new RMQConfigurationManager(new[] { rmqConnectionSetting } );
+            var con = config.GetConnectionSettings("connection");
+            var queue = config.GetQueueSettings("lms.activity.items");
 
             await Task.Delay(0);
         }

@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.4.0" />
+    <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.5.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.0.571" />
     <PackageReference Include="System.Reflection.DispatchProxy" Version="4.5.1" />
   </ItemGroup>
