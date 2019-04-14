@@ -58,6 +58,8 @@ namespace Plato.Messaging.RMQ
                     NodeAttributes = ConfigHelper.GetNodeChildAttributes(_configNode, ".");
                 }
             }
+
+            NodeAttributes = NodeAttributes ?? new NodeChildAttributes();
         }
 
         /// <summary>

@@ -404,9 +404,16 @@ namespace Plato.TestHarness.Messaging
                 Uri = "amqp://some-host:5672"
             };
 
-            var config = new RMQConfigurationManager(new[] { rmqConnectionSetting } );
+            var queues = new List<RMQQueueSettings>();
+
+            foreach (var queue in new[] { "Engine.Inbound","Engine.Outbound","ERROR.SparkEvents" })
+            {
+                queues.Add(new RMQQueueSettings(queue, queue, true, false, false, true));
+            }
+            
+            var config = new RMQConfigurationManager(new[] { rmqConnectionSetting }, queueSettings: queues);
             var con = config.GetConnectionSettings("connection");
-            var queue = config.GetQueueSettings("lms.activity.items");
+            var queuesetting = config.GetQueueSettings("lms.activity.items");
 
             await Task.Delay(0);
         }
