@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Playground\**" />
+    <Content Remove="Playground\**" />
+    <EmbeddedResource Remove="Playground\**" />
+    <None Remove="Playground\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="AMQSettings.config" />
     <Content Remove="app.config" />
     <Content Remove="AppSettings.config" />
@@ -43,10 +50,6 @@
     <ProjectReference Include="..\Plato.Security\Plato.Security.csproj" />
     <ProjectReference Include="..\Plato.Serializers\Plato.Serializers.csproj" />
     <ProjectReference Include="..\Plato\Plato.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Playground\" />
   </ItemGroup>
 
 </Project>

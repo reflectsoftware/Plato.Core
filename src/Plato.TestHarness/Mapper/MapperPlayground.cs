@@ -28,13 +28,13 @@ namespace Plato.TestHarness.Mapper
 
     public class MyMapper : MapperBase, IMyMapper
     {
-        public void Map(MapperTestClass1 source, MapperTestClass2 target)
+        public void Map(MapperTestClass1 source, MapperTestClass2 target, params object[] args)
         {
             target.TheName = source.Name;
             target.TheAddress = source.Address;
         }
 
-        public async Task MapAsync(MapperTestClass1 source, MapperTestClass2 target)
+        public async Task MapAsync(MapperTestClass1 source, MapperTestClass2 target, params object[] args)
         {
             target.TheName = source.Name;
             target.TheAddress = source.Address;

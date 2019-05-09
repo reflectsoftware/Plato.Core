@@ -18,7 +18,8 @@ namespace Plato.Mapper
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
-        void Map(T1 source, T2 target);
+        /// <param name="args">The arguments.</param>
+        void Map(T1 source, T2 target, params object[] args);
     }
 
 
@@ -34,6 +35,8 @@ namespace Plato.Mapper
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
-        Task MapAsync(T1 source, T2 target);
+        /// <param name="args">The arguments.</param>
+        /// <returns></returns>
+        Task MapAsync(T1 source, T2 target, params object[] args);
     }
 }
