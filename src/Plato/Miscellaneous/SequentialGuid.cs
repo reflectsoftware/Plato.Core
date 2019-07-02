@@ -39,10 +39,10 @@ namespace Plato.Miscellaneous
         /// <summary>
         /// News the unique identifier.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>s
         public static Guid NewGuid()
         {
-            return NewGuid(DateTime.UtcNow.Ticks);
+            return NewGuid(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
         }
     }
 }
