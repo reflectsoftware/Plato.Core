@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+  <PropertyGroup>    
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ReflectSoftware Inc.</Authors>
     <Company>ReflectSoftware Inc.</Company>
@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Apache.NMS.ActiveMQ.NetCore" Version="1.7.2" />
-  </ItemGroup>
+    <PackageReference Include="Apache.NMS.ActiveMQ.NetStd" Version="1.7.2.4115" />
+  </ItemGroup>  
 
   <ItemGroup>
     <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />

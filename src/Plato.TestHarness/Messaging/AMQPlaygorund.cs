@@ -267,8 +267,8 @@ namespace Plato.TestHarness.Messaging
         static public async Task RunAsync()
         {
             // await ProducerPerformanceTestAsync();
-            // await ProducerAsync();
-            await ConsumerAsync();
+            await ProducerAsync();
+            // await ConsumerAsync();
 
             // await PoolTestAsync();
 
