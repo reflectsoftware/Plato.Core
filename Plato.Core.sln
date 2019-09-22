@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Solution Items", "01. Solution Items", "{83BAC6DB-AF54-4978-A70F-D84761E606E1}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Security", "src\Plato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.WebTestHarness", "src\Plato.WebTestHarness\Plato.WebTestHarness.csproj", "{7BDEE909-D3FB-4668-9DF4-E07217AE92BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plato.Autofac", "src\Plato.Autofac\Plato.Autofac.csproj", "{89BD0105-BAE9-4FAD-A79E-01972883A822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.Autofac", "src\Plato.Autofac\Plato.Autofac.csproj", "{89BD0105-BAE9-4FAD-A79E-01972883A822}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plato.ExceptionIntercepts", "src\Plato.ExceptionIntercepts\Plato.ExceptionIntercepts.csproj", "{03A51385-9F87-46BE-90CD-9A96F79AA9C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89BD0105-BAE9-4FAD-A79E-01972883A822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A51385-9F87-46BE-90CD-9A96F79AA9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A51385-9F87-46BE-90CD-9A96F79AA9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A51385-9F87-46BE-90CD-9A96F79AA9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A51385-9F87-46BE-90CD-9A96F79AA9C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{A4872741-6AFE-4978-8E7A-B2004837AC8D} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 		{7BDEE909-D3FB-4668-9DF4-E07217AE92BE} = {81D2A775-A462-421D-8D3D-4FDF16C2425B}
 		{89BD0105-BAE9-4FAD-A79E-01972883A822} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
+		{03A51385-9F87-46BE-90CD-9A96F79AA9C7} = {2BE82DBC-F069-4D8F-90C0-BA7F1C4A8632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E762F8-B6A5-4940-BAC1-4DF4207C9583}

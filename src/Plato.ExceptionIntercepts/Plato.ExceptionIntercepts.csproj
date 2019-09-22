@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ReflectSoftware Inc.</Authors>
+    <Company>ReflectSoftware Inc.</Company>
+    <Product>ReflectSoftware reusable common libraries.</Product>
+    <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
+    <PackageId>Plato.NetCore.ExceptionIntercepts</PackageId>
+    <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
+    <PackageIconUrl>https://reflectsoftware.com/images/Plato.Core-256.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags>ASP.NET;AspNetCore;Exception Handling;WebAPI;Mvc</PackageTags>
+    <Description>A Global Exception Handler Middleware, allowing developers to create one or more exception handlers (intercepts).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
+  </ItemGroup>  
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+  </ItemGroup>  
+  
+</Project>
