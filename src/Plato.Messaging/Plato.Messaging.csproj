@@ -9,7 +9,7 @@
     <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
     <PackageId>Plato.NetCore.Messaging</PackageId>
     <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
-    <PackageIconUrl>https://reflectsoftware.com/images/Plato.Core-256.png</PackageIconUrl>
+    <PackageIcon>Plato.Core-256.png</PackageIcon>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>plato.core dotnetcore netcore dotnet Messaging</PackageTags>
@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Plato.Core-256.png" Link="Plato.Core-256.png">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
     <None Include="..\Plato.Core.licenseheader" Link="Plato.Core.licenseheader" />
   </ItemGroup>
 
