@@ -22,14 +22,14 @@ namespace Plato.Messaging.RMQ.Builder
     /// </summary>
     public static class RMQBuilderExtensions
     {
-        private static readonly Dictionary<Type, RMQQueueBuilderOptions> _Consumers;
+        private static readonly Dictionary<Type, RMQBuilderOptions> _Consumers;
 
         /// <summary>
         /// Initializes the <see cref="RMQBuilderExtensions"/> class.
         /// </summary>
         static RMQBuilderExtensions()
         {
-            _Consumers = new Dictionary<Type, RMQQueueBuilderOptions>();
+            _Consumers = new Dictionary<Type, RMQBuilderOptions>();
         }
 
         /// <summary>
@@ -39,10 +39,10 @@ namespace Plato.Messaging.RMQ.Builder
         /// <param name="services">The services.</param>
         /// <param name="configure">The configure.</param>
         /// <returns></returns>
-        public static IServiceCollection AddRMQBoundConsumers<T>(this IServiceCollection services, Action<RMQQueueBuilderOptions> configure) where T : IRMQBoundConsumer
+        public static IServiceCollection AddRMQBoundConsumers<T>(this IServiceCollection services, Action<RMQBuilderOptions> configure) where T : IRMQBoundConsumer
         {
             var type = typeof(T);
-            var options = new RMQQueueBuilderOptions();
+            var options = new RMQBuilderOptions();
 
             configure(options);
 
@@ -64,11 +64,11 @@ namespace Plato.Messaging.RMQ.Builder
             {
                 Task.Run(async () =>
                 {
-                    var logFactory = serviceProvider.GetService<ILoggerFactory>();
-                    var logger = logFactory.CreateLogger(type);
                     var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
+                    var logFactory = serviceProvider.GetService<ILoggerFactory>();
+                    var logger = logFactory.CreateLogger(type);                    
                     var options = _Consumers[type];
-
+                    
                     var consumer = typeof(IRMQBoundConsumerText).IsAssignableFrom(type)
                         ? (IRMQConsumer)consumerFactory.CreateText(options.ConnectionSettings, options.QueueSettings)
                         : consumerFactory.CreateBytes(options.ConnectionSettings, options.QueueSettings);
