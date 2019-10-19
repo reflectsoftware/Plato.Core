@@ -7,13 +7,14 @@
     <Company>ReflectSoftware Inc.</Company>
     <Product>ReflectSoftware reusable common libraries.</Product>
     <Copyright>Copyright (C) 2019 ReflectSoftware Inc.</Copyright>
-    <PackageId>Plato.NetCore.Messaging.RMQ</PackageId>
+    <PackageId>Plato.NetCore.DomainEvents</PackageId>    
     <PackageProjectUrl>https://github.com/reflectsoftware/Plato.Core</PackageProjectUrl>
     <PackageIcon>Plato.Core-256.png</PackageIcon>
     <RepositoryUrl>https://github.com/reflectsoftware/Plato.Core</RepositoryUrl>
     <RepositoryType></RepositoryType>
-    <PackageTags>plato.core dotnetcore netcore dotnet RabbitMQ Messaging</PackageTags>
-    <Description>Plato.Messaging.RabbitMQ .NET Core library</Description>
+    <PackageTags>plato.core dotnetcore netcore dotnet</PackageTags>
+    <Description>Plato.DomainEvents .NET Core library</Description>
+    <PackageLicenseUrl></PackageLicenseUrl>    
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,14 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
-    <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
-    <ProjectReference Include="..\Plato.Messaging\Plato.Messaging.csproj" />
     <ProjectReference Include="..\Plato\Plato.csproj" />
   </ItemGroup>
 

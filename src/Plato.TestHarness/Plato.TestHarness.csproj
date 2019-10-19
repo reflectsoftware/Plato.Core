@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Plato.Async\Plato.Async.csproj" />
     <ProjectReference Include="..\Plato.Cache\Plato.Cache.csproj" />
     <ProjectReference Include="..\Plato.Configuration\Plato.Configuration.csproj" />
+    <ProjectReference Include="..\Plato.DomainEvents\Plato.DomainEvents.csproj" />
     <ProjectReference Include="..\Plato.Messaging.AMQ\Plato.Messaging.AMQ.csproj" />
     <ProjectReference Include="..\Plato.Messaging.RMQ\Plato.Messaging.RMQ.csproj" />
     <ProjectReference Include="..\Plato.Messaging\Plato.Messaging.csproj" />
@@ -31,6 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>    
+    <PackageReference Include="MediatR" Version="7.0.0" />    
+    <PackageReference Include="SimpleInjector" Version="4.7.1" />    
     <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
   </ItemGroup>
 

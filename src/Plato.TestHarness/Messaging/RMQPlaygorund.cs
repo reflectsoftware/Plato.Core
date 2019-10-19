@@ -153,7 +153,7 @@ namespace Plato.TestHarness.Messaging
                             var message = consumer.Receive(1000);
                             if (message != null)
                             {
-                                //message.Reject(true);
+                                //message.Reject(true); 
                                 //message.Reject();
 
                                 Console.WriteLine(message.Data);
@@ -388,32 +388,32 @@ namespace Plato.TestHarness.Messaging
         {
             //await ProducerPerformanceTestAsync();
             //await ProducerAsync();
-            //await ConsumerAsync();
+            await ConsumerAsync();
             // await PoolTestAsync();
             //await SimplePoolTestAsync();
 
             // await PoolAsyncManagerReadTestAsync();
 
-            var rmqConnectionSetting = new RMQConnectionSettings
-            {
-                Name = "connection",
-                Username = "Ross UN",
-                Password = "Ross PW",
-                VirtualHost = "/",
-                DelayOnReconnect = 1500,
-                Uri = "amqp://some-host:5672"
-            };
+            //var rmqConnectionSetting = new RMQConnectionSettings
+            //{
+            //    Name = "connection",
+            //    Username = "Ross UN",
+            //    Password = "Ross PW",
+            //    VirtualHost = "/",
+            //    DelayOnReconnect = 1500,
+            //    Uri = "amqp://some-host:5672"
+            //};
 
-            var queues = new List<RMQQueueSettings>();
+            //var queues = new List<RMQQueueSettings>();
 
-            foreach (var queue in new[] { "Engine.Inbound","Engine.Outbound","ERROR.SparkEvents" })
-            {
-                queues.Add(new RMQQueueSettings(queue, queue, true, false, false, true));
-            }
+            //foreach (var queue in new[] { "Engine.Inbound","Engine.Outbound","ERROR.SparkEvents" })
+            //{
+            //    queues.Add(new RMQQueueSettings(queue, queue, true, false, false, true));
+            //}
             
-            var config = new RMQConfigurationManager(new[] { rmqConnectionSetting }, queueSettings: queues);
-            var con = config.GetConnectionSettings("connection");
-            var queuesetting = config.GetQueueSettings("lms.activity.items");
+            //var config = new RMQConfigurationManager(new[] { rmqConnectionSetting }, queueSettings: queues);
+            //var con = config.GetConnectionSettings("connection");
+            //var queuesetting = config.GetQueueSettings("lms.activity.items");
 
             await Task.Delay(0);
         }

@@ -34,7 +34,7 @@ namespace Plato.TestHarness.Cache
         }
     }        
 
-    public static class CachePlaygorund
+    public static class CachePlayground
     {
         static private Task TestPoolAsync()
         {
