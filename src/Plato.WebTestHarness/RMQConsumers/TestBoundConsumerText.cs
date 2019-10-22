@@ -1,6 +1,7 @@
 ﻿using Plato.Messaging.RMQ;
 using Plato.Messaging.RMQ.Interfaces;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Plato.WebTestHarness.RMQConsumers
@@ -15,7 +16,7 @@ namespace Plato.WebTestHarness.RMQConsumers
         {
         }
 
-        public Task OnMessageAsync(RMQReceiverResultText result)
+        public Task OnMessageAsync(RMQReceiverResultText result, CancellationToken cancellationToken)
         {
             Console.WriteLine(result.Data);
             return Task.CompletedTask;

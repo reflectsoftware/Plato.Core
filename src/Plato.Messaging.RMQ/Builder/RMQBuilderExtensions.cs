@@ -146,7 +146,7 @@ namespace Plato.Messaging.RMQ.Builder
                                             using (var scope = serviceProvider.CreateScope())
                                             {
                                                 var loopConsumer = scope.ServiceProvider.GetService(type) as IRMQBoundConsumerText;
-                                                await loopConsumer.OnMessageAsync(message);
+                                                await loopConsumer.OnMessageAsync(message, cancellationToken);
                                                 message.Acknowledge();
                                             }
                                         }
