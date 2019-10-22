@@ -63,8 +63,8 @@ namespace Plato.Messaging.RMQ.Factories
             _pubInvokers[typeof(IRMQPublisherBytes)] = (connection, exchange) => _publisherFactory.CreateBytes(connection, exchange);
             _pubInvokers[typeof(IRMQPublisherText)] = (connection, exchange) => _publisherFactory.CreateText(connection, exchange);
 
-            _subInvokers[typeof(IRMQSubscriberBytes)] = (connection, exchange, destination) => _subscriberFactory.CreateBytes(connection, exchange, destination);
-            _subInvokers[typeof(IRMQSubscriberText)] = (connection, exchange, destination) => _subscriberFactory.CreateText(connection, exchange, destination);
+            _subInvokers[typeof(IRMQConsumerBytes)] = (connection, exchange, destination) => _subscriberFactory.CreateBytes(connection, exchange, destination);
+            _subInvokers[typeof(IRMQConsumerText)] = (connection, exchange, destination) => _subscriberFactory.CreateText(connection, exchange, destination);
         }
 
         /// <summary>

@@ -384,13 +384,34 @@ namespace Plato.TestHarness.Messaging
 
         #endregion Pool Test
 
+        static Task PublisherAsync(string message, string routingKey)
+        {
+            var configManager = CreateConfigurationManager();
+            var publihserFactory = new RMQPublisherFactory(new RMQConnectionFactory());
+            var connectionSettings = configManager.GetConnectionSettings("connection");
+            var exchange = configManager.GetExchangeSettings("Queue_Exchange");
+
+            using(var publisher = publihserFactory.CreateText(connectionSettings, exchange))
+            {
+                publisher.Send(message, iprops =>
+                {
+                    var props = (RMQSenderProperties)iprops;
+                    props.RoutingKey = routingKey;
+                });
+            }
+
+            return Task.CompletedTask;
+        }
+
         static public async Task RunAsync()
         {
-            //await ProducerPerformanceTestAsync();
-            //await ProducerAsync();
-            await ConsumerAsync();
+            await PublisherAsync("Ross", "Red");
+
+            // await ProducerPerformanceTestAsync();
+            // await ProducerAsync();
+            // await ConsumerAsync();
             // await PoolTestAsync();
-            //await SimplePoolTestAsync();
+            // await SimplePoolTestAsync();
 
             // await PoolAsyncManagerReadTestAsync();
 
@@ -410,7 +431,7 @@ namespace Plato.TestHarness.Messaging
             //{
             //    queues.Add(new RMQQueueSettings(queue, queue, true, false, false, true));
             //}
-            
+
             //var config = new RMQConfigurationManager(new[] { rmqConnectionSetting }, queueSettings: queues);
             //var con = config.GetConnectionSettings("connection");
             //var queuesetting = config.GetQueueSettings("lms.activity.items");

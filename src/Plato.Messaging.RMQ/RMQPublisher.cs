@@ -77,6 +77,34 @@ namespace Plato.Messaging.RMQ
         }
 
         /// <summary>
+        /// Opens the channel.
+        /// </summary>
+        protected override void OpenChannel()
+        {
+            base.OpenChannel();
+
+            try
+            {
+                _channel.ExchangeDeclare(
+                    _exchangeSettings.ExchangeName,
+                    _exchangeSettings.Type,
+                    _exchangeSettings.Durable,
+                    _exchangeSettings.AutoDelete,
+                    _exchangeSettings.Arguments);
+            }
+            catch (Exception ex)
+            {
+                var newException = RMQExceptionHandler.ExceptionHandler(_connection, ex);
+                if (newException != null)
+                {
+                    throw newException;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Sends the specified data.
         /// </summary>
         /// <param name="data">The data.</param>
@@ -95,7 +123,7 @@ namespace Plato.Messaging.RMQ
 
                     try
                     {
-                        var senderProperties = new RMQSenderProperties()
+                        var senderProperties = new RMQSenderProperties
                         {
                             Properties = null,
                             Exchange = _exchangeSettings.ExchangeName,

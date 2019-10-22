@@ -12,8 +12,8 @@ namespace Plato.Messaging.RMQ
     /// 
     /// </summary>
     /// <seealso cref="Plato.Messaging.RMQ.RMQSubscriber" />
-    /// <seealso cref="Plato.Messaging.RMQ.Interfaces.IRMQSubscriberText" />
-    public class RMQSubscriberText : RMQSubscriber, IRMQSubscriberText
+    /// <seealso cref="Plato.Messaging.RMQ.Interfaces.IRMQConsumerText" />
+    public class RMQSubscriberText : RMQSubscriber, IRMQConsumerText
     {
         public RMQSubscriberText(
             IRMQConnectionFactory connectionFactory,

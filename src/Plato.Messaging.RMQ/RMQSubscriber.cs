@@ -13,7 +13,7 @@ namespace Plato.Messaging.RMQ
     /// </summary>
     /// <seealso cref="Plato.Messaging.RMQ.RMQPublisherSubscriber" />
     /// <seealso cref="Plato.Messaging.RMQ.Interfaces.IRMQSubscriber" />
-    public class RMQSubscriber : RMQConsumer, IRMQSubscriber
+    public class RMQSubscriber : RMQConsumer, IRMQConsumer
     {
         protected readonly RMQExchangeSettings _exchangeSettings;
 
