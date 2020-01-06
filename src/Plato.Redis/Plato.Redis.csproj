@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ReflectSoftware Inc.</Authors>
     <Company>ReflectSoftware Inc.</Company>
@@ -27,8 +27,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.7.0" />
-    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
-    <PackageReference Include="System.Reflection.DispatchProxy" Version="4.7.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />        
   </ItemGroup>
 
   <ItemGroup>
