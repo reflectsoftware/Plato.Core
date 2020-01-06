@@ -1,5 +1,5 @@
 ﻿// Plato.Core
-// Copyright (c) 2019 ReflectSoftware Inc.
+// Copyright (c) 2020 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Plato.Redis.Interfaces;
@@ -236,7 +236,7 @@ namespace Plato.Redis.Collections
         public T Peek()
         {
             var value = RedisDb.ListGetByIndex(RedisKey, 0);
-            return value.HasValue ? Serializer.Deserialize<T>(value) : default(T);
+            return value.HasValue ? Serializer.Deserialize<T>(value) : default;
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Plato.Redis.Collections
         public async Task<T> PeekAsync()
         {
             var value = await RedisDb.ListGetByIndexAsync(RedisKey, 0);
-            return value.HasValue ? Serializer.Deserialize<T>(value) : default(T);
+            return value.HasValue ? Serializer.Deserialize<T>(value) : default;
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Plato.Redis.Collections
         public async Task<T> GetAsync(int index)
         {
             var value = await RedisDb.ListGetByIndexAsync(RedisKey, index);
-            return value.HasValue ? Serializer.Deserialize<T>(value) : default(T);
+            return value.HasValue ? Serializer.Deserialize<T>(value) : default;
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Plato.Redis.Collections
             get
             {
                 var value = RedisDb.ListGetByIndex(RedisKey, index);
-                return value.HasValue ? Serializer.Deserialize<T>(value) : default(T);
+                return value.HasValue ? Serializer.Deserialize<T>(value) : default;
             }
             set
             {
@@ -328,7 +328,7 @@ namespace Plato.Redis.Collections
             var values = RedisDb.ListRange(RedisKey);
             for (var i = 0; i < values.Length; i++)
             {
-                array[index + i] = values[i].HasValue ? Serializer.Deserialize<T>(values[i]) : default(T);
+                array[index + i] = values[i].HasValue ? Serializer.Deserialize<T>(values[i]) : default;
             }
         }
 
@@ -403,7 +403,7 @@ namespace Plato.Redis.Collections
             for (int i = 0; i < Count; i++)
             {
                 var value = RedisDb.ListGetByIndex(RedisKey, i);
-                yield return value.HasValue ? Serializer.Deserialize<T>(value) : default(T);
+                yield return value.HasValue ? Serializer.Deserialize<T>(value) : default;
             }
         }
 

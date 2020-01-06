@@ -32,9 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>    
-    <PackageReference Include="MediatR" Version="7.0.0" />    
-    <PackageReference Include="SimpleInjector" Version="4.7.1" />    
-    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+    <PackageReference Include="MediatR" Version="8.0.0" />    
+    <PackageReference Include="SimpleInjector" Version="4.8.1" />    
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
   <ItemGroup>
