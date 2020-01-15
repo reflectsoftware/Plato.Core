@@ -192,8 +192,8 @@ namespace Plato.Messaging.RMQ.Builder
                                 }
                                 catch (Exception ex2)
                                 {
-                                    var aggeratedException = new AggregateException("RMQ Consumer Error (OnException Handler fault).", new[] { ex, ex2 });                                    
-                                    logger.LogError(aggeratedException, aggeratedException.Message);
+                                    var aggregateException = new AggregateException("RMQ Consumer Error (OnException Handler fault).", new[] { ex, ex2 });                                    
+                                    logger.LogError(aggregateException, aggregateException.Message);
                                 }
                             }
                         }
