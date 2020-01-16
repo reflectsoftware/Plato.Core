@@ -57,7 +57,7 @@ namespace Plato.Messaging.RMQ.Settings
         /// <value>
         /// The arguments.
         /// </value>
-        public IDictionary<string, object> Arguments { get; set; }
+        public Dictionary<string, object> Arguments { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RMQExchangeSettings" /> class.
@@ -74,7 +74,7 @@ namespace Plato.Messaging.RMQ.Settings
             string type = "direct", 
             bool durable = true, 
             bool autoDelete = false, 
-            IDictionary<string, object> arguments = null)
+            Dictionary<string, object> arguments = null)
         {
             Name = name;
             ExchangeName = exchangeName;

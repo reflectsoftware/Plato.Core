@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -405,7 +406,12 @@ namespace Plato.TestHarness.Messaging
 
         static public async Task RunAsync()
         {
-            await PublisherAsync("Ross", "Red");
+            var xxx = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.json");
+
+            //var qs = configManager.GetQueueSettings("Ross");
+
+
+            // await PublisherAsync("Ross", "Red");
 
             // await ProducerPerformanceTestAsync();
             // await ProducerAsync();

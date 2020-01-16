@@ -1,0 +1,37 @@
+﻿{
+  "Connections": [
+    {
+      "Name": "connection",
+      "Username": "guest",
+      "Password": "guest",
+      "Virtualhost": "/",
+      "Uri": "amqp://host.docker.internal:5672,amqp://host.docker.internal:5673,amqp://host.docker.internal:5674",
+      "DelayOnReconnect": 1000,
+      "ForceReconnectionTime": "00:00:00"
+    }
+  ],
+  "Exchanges": [
+    {
+      "Name": "Queue_Exchangenection",
+      "ExchangeName": "test.direct",
+      "Type": "direct",
+      "Durable": true,
+      "AutoDelete": false
+    }
+  ],
+  "Queues": [
+    {
+      "Name": "MyQueue",
+      "QueueName": "MyQueue",
+      "Durable": true,
+      "Exclusive": false,
+      "AutoDelete": false,
+      "persistent": true,
+      "routingKeys": [ "r1", "r2" ],
+      "Arguments": {
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "DLQ.MyQueue"
+      }
+    }
+  ]
+}

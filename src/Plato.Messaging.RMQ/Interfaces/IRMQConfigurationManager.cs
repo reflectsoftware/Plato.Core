@@ -4,37 +4,11 @@
 
 using Plato.Messaging.RMQ.Settings;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 
 namespace Plato.Messaging.RMQ.Interfaces
 {
     public interface IRMQConfigurationManager
     {
-        /// <summary>
-        /// Gets the attributes collection for all nodes.
-        /// </summary>
-        /// <param name="nodeName">Name of the node.</param>
-        /// <returns></returns>
-        List<NameValueCollection> GetAttributesCollectionForAllNodes(string nodeName);
-
-        /// <summary>
-        /// Gets the attributes.
-        /// </summary>
-        /// <param name="nodeName">Name of the node.</param>
-        /// <param name="name">The name.</param>
-        /// <returns></returns>
-        NameValueCollection GetAttributes(string nodeName, string name);
-
-        /// <summary>
-        /// Gets the attribute.
-        /// </summary>
-        /// <param name="nodeName">Name of the node.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="attribute">The attribute.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <returns></returns>
-        string GetAttribute(string nodeName, string name, string attribute, string defaultValue = null);
-
         /// <summary>
         /// Gets the connection settings.
         /// </summary>
