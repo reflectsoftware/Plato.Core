@@ -44,6 +44,9 @@
     <None Update="AppSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RMQSettings.Issue.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RMQSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

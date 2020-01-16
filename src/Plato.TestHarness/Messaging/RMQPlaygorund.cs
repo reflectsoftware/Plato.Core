@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,7 +37,12 @@ namespace Plato.TestHarness.Messaging
                 Durable = true,
                 AutoDelete = false,
                 Persistent = true,
-                Exclusive = false,                       
+                Exclusive = false,
+                Arguments = new Dictionary<string, object>
+                {
+                    { "x-dead-letter-exchange", "" },
+                    { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
+                }
             };
 
             return new RMQConfigurationManager(new[] { connectionSettings }, queueSettings: new[] { queueSettings });
@@ -46,16 +50,10 @@ namespace Plato.TestHarness.Messaging
 
         static private Task ProducerAsync()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();            
             var procuderFactory = new RMQProducerFactory(new RMQConnectionFactory());
             var connectionSettings = configManager.GetConnectionSettings("connection");
-            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args); 
+            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST"); 
 
             using (var producer = procuderFactory.CreateText(connectionSettings, queueSettings))
             {
@@ -70,16 +68,10 @@ namespace Plato.TestHarness.Messaging
 
         static private async Task ProducerPerformanceTestAsync()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();            
             var procuderFactory = new RMQProducerFactory(new RMQConnectionFactory());
             var connectionSettings = configManager.GetConnectionSettings("connection");
-            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args);
+            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST");
 
             using (var producer = procuderFactory.CreateText(connectionSettings, queueSettings))
             {
@@ -130,16 +122,10 @@ namespace Plato.TestHarness.Messaging
 
         static private Task ConsumerAsync()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
             var connectionSettings = configManager.GetConnectionSettings("connection");
-            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST", args);
+            var queueSettings = configManager.GetQueueSettings("MY_RMQ_TEST");
 
             using (var consumer = consumerFactory.CreateText(connectionSettings, queueSettings))
             {
@@ -203,12 +189,6 @@ namespace Plato.TestHarness.Messaging
         #region Pool Test
         static Task PoolTestAsync()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
             var producerFactory = new RMQProducerFactory(new RMQConnectionFactory());
@@ -228,7 +208,7 @@ namespace Plato.TestHarness.Messaging
                         {
                             for (var j = 0; j < 10; j++)
                             {
-                                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
+                                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST"))
                                 {
                                     var message = $"message: {i * j}";
                                     await producer.Instance.SendAsync(message);
@@ -259,17 +239,11 @@ namespace Plato.TestHarness.Messaging
             var rmqPoolCache = ((Tuple<RMQPool, int>)obj).Item1;
             var i = ((Tuple<RMQPool, int>)obj).Item2;
 
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             try
             {
                 for (var j = 0; j < 10; j++)
                 {
-                    using (var producer = rmqPoolCache.Get<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
+                    using (var producer = rmqPoolCache.Get<IRMQProducerText>("connection", "MY_RMQ_TEST"))
                     {
                         var message = $"message: {i * j}";
                         producer.Instance.Send(message);
@@ -313,12 +287,6 @@ namespace Plato.TestHarness.Messaging
 
         static void SimplePoolTest()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
             var producerFactory = new RMQProducerFactory(new RMQConnectionFactory());
@@ -328,7 +296,7 @@ namespace Plato.TestHarness.Messaging
 
             using (var rmqPool = new RMQPool(configManager, factory, 5))
             {
-                using (var producer = rmqPool.Get<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
+                using (var producer = rmqPool.Get<IRMQProducerText>("connection", "MY_RMQ_TEST"))
                 {
                     producer.Instance.Send("Simple test");
                 }
@@ -337,12 +305,6 @@ namespace Plato.TestHarness.Messaging
 
         static async Task SimplePoolTestAsync()
         {
-            var args = new Dictionary<string, object>
-            {
-                { "x-dead-letter-exchange", "" },
-                { "x-dead-letter-routing-key", "DLQ_MY_RMQ_TEST" }
-            };
-
             var configManager = CreateConfigurationManager();
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
             var producerFactory = new RMQProducerFactory(new RMQConnectionFactory());
@@ -352,7 +314,7 @@ namespace Plato.TestHarness.Messaging
 
             using (var amqPool = new RMQPoolAsync(configManager, factory, 5))
             {
-                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST", queueArgs: args))
+                using (var producer = await amqPool.GetAsync<IRMQProducerText>("connection", "MY_RMQ_TEST"))
                 {
                     await producer.Instance.SendAsync("Simple test");
                 }
@@ -406,7 +368,60 @@ namespace Plato.TestHarness.Messaging
 
         static public async Task RunAsync()
         {
-            var xxx = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.json");
+            var configuration = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.Issue.json");
+            var connectionFactory = new RMQConnectionFactory();
+            var consumerFactory = new RMQConsumerFactory(connectionFactory);
+            var producerFactory = new RMQProducerFactory(connectionFactory);
+            var subscriberFactory = new RMQSubscriberFactory(connectionFactory);
+            var publisherFactory = new RMQPublisherFactory(connectionFactory);
+            var factory = new RMQSenderReceiverFactory(consumerFactory, producerFactory, subscriberFactory, publisherFactory);
+            var pool = new RMQPoolAsync(configuration, factory, 10);
+
+            var result = (RMQReceiverResultText)null;
+            var queueDetails = configuration.GetQueueSettings("Engine.Inbound");
+
+            using (var container = await pool.GetAsync<IRMQConsumerText>("connection", queueDetails.Name))
+            {
+                var reader = container.Instance;
+                reader.Mode = ConsumerMode.OnNoMessage_ReturnNull;
+
+                try
+                {
+                    result = reader.Receive(1000);
+                    if (result != null)
+                    {
+                    }
+                }
+                catch (TimeoutException)
+                {
+                    // no data, just return null as an indicator
+                }
+                catch (MessageException ex)
+                {
+                    switch (ex.ExceptionCode)
+                    {
+                        case MessageExceptionCode.ExclusiveLock:
+                            await Task.Delay(1000);
+                            break;
+
+                        case MessageExceptionCode.LostConnection:
+                            await Task.Delay(1000);
+                            reader.ClearCacheBuffer();
+                            throw;
+
+                        default:
+                            reader.ClearCacheBuffer();
+                            throw;
+                    }
+                }
+                catch (Exception)
+                {
+                    result?.Reject();
+                    throw;
+                }
+            }
+
+
 
             //var qs = configManager.GetQueueSettings("Ross");
 

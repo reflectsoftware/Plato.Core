@@ -1,0 +1,59 @@
+﻿{
+  "Connections": [
+    {
+      "Name": "connection",
+      "Username": "local-dev-user",
+      "Password": "local-dev-user",
+      "Virtualhost": "local-dev-vh",
+      "Uri": "amqp://localhost:5672",
+      "DelayOnReconnect": 1000,
+      "ForceReconnectionTime": "03:00:00"
+    }
+  ],
+  "Queues": [
+    {
+      "Name": "Engine.Inbound",
+      "QueueName": "Engine.Inbound",
+      "Durable": true,
+      "Exclusive": false,
+      "AutoDelete": false,
+      "Persistent": true,
+      "Arguments": {
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "DLQ_Engine.Inbound"
+      }
+    },
+    {
+      "Name": "Engine.Outbound",
+      "QueueName": "Engine.Outbound",
+      "Durable": true,
+      "Exclusive": false,
+      "AutoDelete": false,
+      "Persistent": true,
+      "Arguments": {
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "DLQ_Engine.Outbound"
+      }
+    },
+    {
+      "Name": "Event.Messages",
+      "QueueName": "Event.Messages",
+      "Durable": true,
+      "Exclusive": false,
+      "AutoDelete": false,
+      "Persistent": true,
+      "Arguments": {
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "DLQ_Event.Messages"
+      }
+    },
+    {
+      "Name": "ERROR.SparkEvents",
+      "QueueName": "ERROR.SparkEvents",
+      "Durable": true,
+      "Exclusive": false,
+      "AutoDelete": false,
+      "Persistent": true
+    }
+  ]
+}

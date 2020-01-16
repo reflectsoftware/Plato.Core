@@ -4,17 +4,11 @@
 
 using Plato.Messaging.Interfaces;
 using System;
-using System.Collections.Generic;
 
 namespace Plato.Messaging.RMQ.Interfaces
 {
     public interface IRMQPool: IDisposable
-    {
-        IRMQPoolContainer<T> Get<T>(
-            string connectionName, 
-            string queueName, 
-            string exchangeName = null,
-            IDictionary<string, object> queueArgs = null,
-            IDictionary<string, object> exchangeArgs = null) where T : IMessageReceiverSender;
+    { 
+        IRMQPoolContainer<T> Get<T>(string connectionName, string queueName, string exchangeName = null) where T : IMessageReceiverSender;
     }
 }

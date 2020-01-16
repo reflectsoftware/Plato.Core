@@ -3,9 +3,8 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Plato.Cache;
-using Plato.Messaging.RMQ.Interfaces;
 using Plato.Messaging.Interfaces;
-using System.Collections.Generic;
+using Plato.Messaging.RMQ.Interfaces;
 
 namespace Plato.Messaging.RMQ.Pool
 {
@@ -30,15 +29,8 @@ namespace Plato.Messaging.RMQ.Pool
         /// <param name="connectionName">Name of the connection.</param>
         /// <param name="queueName">Name of the queue.</param>
         /// <param name="exchangeName">Name of the exchange.</param>
-        /// <param name="queueArgs">The queue arguments.</param>
-        /// <param name="exchangeArgs">The exchange arguments.</param>
         /// <returns></returns>
-        public IRMQPoolContainer<T> Get<T>(
-            string connectionName, 
-            string queueName, 
-            string exchangeName = null,
-            IDictionary<string, object> queueArgs = null,
-            IDictionary<string, object> exchangeArgs = null) where T: IMessageReceiverSender
+        public IRMQPoolContainer<T> Get<T>(string connectionName, string queueName, string exchangeName = null) where T: IMessageReceiverSender
         {
             var states = VerifyPoolStates(connectionName, queueName, exchangeName);
             var type = typeof(T);
@@ -46,22 +38,6 @@ namespace Plato.Messaging.RMQ.Pool
             var cacheKey = $"type:{type.Name}:{connectionName}:{queueName}.{exchangeName ?? "(null)"}".ToLower();
             var pool = _cache.Get(cacheKey, (name, args) =>
             {
-                if(queueArgs != null)
-                {
-                    foreach (var key in queueArgs.Keys)
-                    {
-                        states.Destination.Arguments[key] = queueArgs[key];
-                    }
-                }
-
-                if (exchangeArgs != null && states.Exchange != null)
-                {
-                    foreach (var key in exchangeArgs.Keys)
-                    {
-                        states.Exchange.Arguments[key] = exchangeArgs[key];
-                    }
-                }
-
                 var objectPool = new RMQObjectPool(_factory, type, states.Connection, states.Destination, states.Exchange, _maxGrowSize);
                 return new CacheDataInfo<RMQObjectPool> { NewCacheData = objectPool };
             });

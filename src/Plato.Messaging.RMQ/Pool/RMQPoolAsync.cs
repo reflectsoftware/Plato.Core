@@ -5,7 +5,6 @@
 using Plato.Cache;
 using Plato.Messaging.Interfaces;
 using Plato.Messaging.RMQ.Interfaces;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Plato.Messaging.RMQ.Pool
@@ -31,15 +30,8 @@ namespace Plato.Messaging.RMQ.Pool
         /// <param name="connectionName">Name of the connection.</param>
         /// <param name="queueName">Name of the queue.</param>
         /// <param name="exchangeName">Name of the exchange.</param>
-        /// <param name="queueArgs">The queue arguments.</param>
-        /// <param name="exchangeArgs">The exchange arguments.</param>
         /// <returns></returns>
-        public async Task<IRMQPoolContainer<T>> GetAsync<T>(
-            string connectionName, 
-            string queueName, 
-            string exchangeName = null,
-            IDictionary<string, object> queueArgs = null,
-            IDictionary<string, object> exchangeArgs = null) where T : IMessageReceiverSender
+        public async Task<IRMQPoolContainer<T>> GetAsync<T>(string connectionName, string queueName, string exchangeName = null) where T : IMessageReceiverSender
         {
             var states = VerifyPoolStates(connectionName, queueName, exchangeName);
             var type = typeof(T);
@@ -47,22 +39,6 @@ namespace Plato.Messaging.RMQ.Pool
             var cacheKey = $"type:{type.Name}:{connectionName}:{queueName}.{exchangeName ?? "(null)"}".ToLower();
             var pool = await _cache.GetAsync(cacheKey, (name, args) =>
             {
-                if (queueArgs != null)
-                {
-                    foreach (var key in queueArgs.Keys)
-                    {
-                        states.Destination.Arguments[key] = queueArgs[key];
-                    }
-                }
-
-                if (exchangeArgs != null && states.Exchange != null)
-                {
-                    foreach (var key in exchangeArgs.Keys)
-                    {
-                        states.Exchange.Arguments[key] = exchangeArgs[key];
-                    }
-                }
-
                 var objectPool = new RMQObjectPoolAsync(_factory, type, states.Connection, states.Destination, states.Exchange, _maxGrowSize);
                 return Task.FromResult(new CacheDataInfo<RMQObjectPoolAsync> { NewCacheData = objectPool });
             });

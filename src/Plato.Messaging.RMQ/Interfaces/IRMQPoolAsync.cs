@@ -4,19 +4,13 @@
 
 using Plato.Messaging.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Plato.Messaging.RMQ.Interfaces
 {
     public interface IRMQPoolAsync: IDisposable
     {
-        Task<IRMQPoolContainer<T>> GetAsync<T>(
-            string connectionName,
-            string queueName,
-            string exchangeName = null,
-            IDictionary<string, object> queueArgs = null,
-            IDictionary<string, object> exchangeArgs = null) where T : IMessageReceiverSender;
+        Task<IRMQPoolContainer<T>> GetAsync<T>(string connectionName, string queueName, string exchangeName = null) where T : IMessageReceiverSender;
 
     }
 }
