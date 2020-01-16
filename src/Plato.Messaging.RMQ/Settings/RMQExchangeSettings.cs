@@ -83,5 +83,12 @@ namespace Plato.Messaging.RMQ.Settings
             AutoDelete = autoDelete;
             Arguments = arguments ?? new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RMQExchangeSettings"/> class.
+        /// </summary>
+        public RMQExchangeSettings() : this(string.Empty)
+        {
+        }
     }
 }

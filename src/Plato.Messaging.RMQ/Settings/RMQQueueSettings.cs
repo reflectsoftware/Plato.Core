@@ -114,5 +114,13 @@ namespace Plato.Messaging.RMQ.Settings
             Arguments = arguments ?? new Dictionary<string, object>();
             ConsumerSettings = new RMQConsumerSettings();
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RMQQueueSettings"/> class.
+        /// </summary>
+        public RMQQueueSettings() : this(string.Empty)
+        {
+        }
+
     }
 }
