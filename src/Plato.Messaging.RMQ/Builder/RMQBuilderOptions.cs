@@ -12,8 +12,7 @@ namespace Plato.Messaging.RMQ.Builder
     /// </summary>
     public class RMQBuilderConsumerOptions
     {
-        public RMQConnectionSettings ConnectionSettings { get; set; }
-        public Action<Exception> OnException { get; set; }        
+        public RMQConnectionSettings ConnectionSettings { get; set; }        
         public RMQQueueSettings QueueSettings { get; set; }
     }
 

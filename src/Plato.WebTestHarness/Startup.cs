@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,18 +30,15 @@ namespace Plato.WebTestHarness
             //services.AddRMQBoundConsumer<TestBoundConsumerText>(options =>
             //{
             //    options.ConnectionSettings = connectionSettings;
-            //    options.QueueSettings = queueSettings;
-            //    options.OnException = (ex) => Console.WriteLine(ex);
+            //    options.QueueSettings = queueSettings;            
             //});
 
             services.AddRMQBoundSubscriber<TestBoundConsumerText>(options =>
             {
                 options.ConnectionSettings = connectionSettings;
                 options.ExchangeSettings = exchangeSettings;
-                options.QueueSettings = queueSettings;                
-                options.OnException = (ex) => Console.WriteLine(ex);
+                options.QueueSettings = queueSettings;                               
             });
-
 
             services.AddControllers();
 
@@ -65,7 +61,7 @@ namespace Plato.WebTestHarness
                 endpoints.MapControllers();
             });
 
-            app.UseRMQBoundConsumers();
+            app.UseRMQBoundConsumers((ex) => Console.WriteLine(ex));
         }
     }
 }

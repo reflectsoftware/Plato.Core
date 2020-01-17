@@ -87,7 +87,8 @@ namespace Plato.Messaging.RMQ.Builder
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        public static void UseRMQBoundConsumers(this IServiceProvider serviceProvider, CancellationToken cancellationToken)
+        /// <param name="onException">The on exception.</param>
+        public static void UseRMQBoundConsumers(this IServiceProvider serviceProvider, CancellationToken cancellationToken, Action<Exception> onException = null)
         {
             var consumerFactory = new RMQConsumerFactory(new RMQConnectionFactory());
             var subcriberFactory = new RMQSubscriberFactory(new RMQConnectionFactory());
@@ -188,7 +189,7 @@ namespace Plato.Messaging.RMQ.Builder
 
                                 try
                                 {
-                                    options?.OnException(ex);
+                                    onException?.Invoke(ex);
                                 }
                                 catch (Exception ex2)
                                 {
@@ -206,12 +207,13 @@ namespace Plato.Messaging.RMQ.Builder
         /// Uses the RMQ bound consumers.
         /// </summary>
         /// <param name="app">The application.</param>
+        /// <param name="onException">The on exception.</param>
         /// <returns></returns>
-        public static IApplicationBuilder UseRMQBoundConsumers(this IApplicationBuilder app)
+        public static IApplicationBuilder UseRMQBoundConsumers(this IApplicationBuilder app, Action<Exception> onException = null)
         {
             var lifetime = app.ApplicationServices.GetService<IApplicationLifetime>();
 
-            app.ApplicationServices.UseRMQBoundConsumers(lifetime.ApplicationStopping);
+            app.ApplicationServices.UseRMQBoundConsumers(lifetime.ApplicationStopping, onException);
 
             return app;
         }
