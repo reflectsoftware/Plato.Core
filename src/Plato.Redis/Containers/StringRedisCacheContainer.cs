@@ -35,13 +35,13 @@ namespace Plato.Redis.Containers
                         
             _connection = connection;            
             _redisDb = connection.GetDatabase();            
-            _prefixName = string.IsNullOrWhiteSpace(name) ? "StringRedisCache" : name;
+            _prefixName = string.IsNullOrWhiteSpace(name) ? "string-redis-cache" : name;
         }
 
         /// <summary>
         /// Prefixes the name.
         /// </summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">The name.</param>f
         /// <returns></returns>
         protected string PrefixName(string name)
         {

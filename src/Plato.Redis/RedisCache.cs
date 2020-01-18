@@ -176,7 +176,7 @@ namespace Plato.Redis
 
             if (callbackAsync == null)
             {
-                return default(T);
+                return default;
             }
 
             using (var cacheLock = await _cacheKeyLockAcquisition.AcquireLockAsync(_redisDb, name))
@@ -187,7 +187,7 @@ namespace Plato.Redis
                     var cData = await callbackAsync(name, args);
                     if (cData == null)
                     {
-                        return default(T);
+                        return default;
                     }
 
                     await SetAsync(name, cData.NewCacheData, cData.KeepAlive);

@@ -35,7 +35,7 @@ namespace Plato.Redis.Containers
                         
             _connection = connection;            
             _redisDb = connection.GetDatabase();            
-            _name = string.IsNullOrWhiteSpace(name) ? "HashRedisCache" : name;
+            _name = string.IsNullOrWhiteSpace(name) ? "hash-redis-cache" : name;
         }      
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Plato.Redis.Containers
         /// <returns></returns>
         protected TimeSpan? GetTimeToLive(TimeSpan? keepAlive)
         {
-            return keepAlive = keepAlive == TimeSpan.Zero ? null : keepAlive;
+            return keepAlive == TimeSpan.Zero ? null : keepAlive;
         }
 
         /// <summary>
