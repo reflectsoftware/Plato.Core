@@ -955,7 +955,7 @@ namespace Plato.Serializers
             }
             else
             {
-                value = default(T);
+                value = default;
             }
 
             return value;

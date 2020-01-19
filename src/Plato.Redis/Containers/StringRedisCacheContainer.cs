@@ -55,7 +55,7 @@ namespace Plato.Redis.Containers
         /// <returns></returns>
         protected TimeSpan? GetTimeToLive(TimeSpan? keepAlive)
         {
-            return keepAlive = keepAlive == TimeSpan.Zero ? null : keepAlive;
+            return keepAlive == TimeSpan.Zero ? null : keepAlive;
         }
 
         /// <summary>

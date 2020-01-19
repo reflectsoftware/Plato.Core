@@ -320,7 +320,7 @@ namespace Plato.Redis.Collections
             var redisValue = RedisDb.HashGet(RedisKey, KeySerializer.Serialize(key));
             if (redisValue.IsNull)
             {
-                value = default(TValue);
+                value = default;
                 return false;
             }
 

@@ -37,7 +37,7 @@ namespace Plato.DomainEvents
         /// <returns></returns>
         public TData GetProperty<TData>(string key)
         {
-            TData result = default(TData);
+            var result = default(TData);
             if (Properties.ContainsKey(key))
             {
                 result = (TData)Properties[key];

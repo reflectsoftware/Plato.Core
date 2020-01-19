@@ -43,7 +43,7 @@ namespace Plato.Messaging.Interfaces
         /// <param name="key">The key.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns></returns>
-        T GetHeader<T>(string key, T defaultValue = default(T));
+        T GetHeader<T>(string key, T defaultValue = default);
 
         /// <summary>
         /// Acknowledges this instance.

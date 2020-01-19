@@ -52,7 +52,7 @@ namespace Plato.Redis.Serializers
                 }
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>

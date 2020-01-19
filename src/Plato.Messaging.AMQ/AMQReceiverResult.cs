@@ -57,7 +57,7 @@ namespace Plato.Messaging.AMQ
         /// <param name="key">The key.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns></returns>
-        public T GetHeader<T>(string key, T defaultValue = default(T))
+        public T GetHeader<T>(string key, T defaultValue = default)
         {
             return Headers != null && Headers.ContainsKey(key) ? (T)Headers[key] : defaultValue;
         }

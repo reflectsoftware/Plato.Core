@@ -34,7 +34,7 @@ namespace Plato.Redis.Serializers
         /// <returns></returns>
         public T Deserialize<T>(RedisValue data)
         {
-            return data.HasValue ? JsonConvert.DeserializeObject<T>(data) : default(T);
+            return data.HasValue ? JsonConvert.DeserializeObject<T>(data) : default;
         }
 
         /// <summary>

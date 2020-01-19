@@ -116,10 +116,10 @@ namespace Plato.Redis
         public T Get<T>(string name, Func<string, object[], CacheDataInfo<T>> callback = null, params object[] args)
         {            
             var value = _container.Get(name);
-            if(value.HasValue)
+            if (value.HasValue)
             {
                 var cInfo = _serialier.Deserialize<CacheDataInfo<T>>(value);
-                if(_container.SupportsExpiration || !HasExpired(cInfo))
+                if (_container.SupportsExpiration || !HasExpired(cInfo))
                 {
                     return cInfo.NewCacheData;
                 }
@@ -129,7 +129,7 @@ namespace Plato.Redis
 
             if (callback == null)
             {
-                return default(T);
+                return default;
             }
 
             using (var cacheLock = _cacheKeyLockAcquisition.AcquireLock(_redisDb, name))
@@ -140,7 +140,7 @@ namespace Plato.Redis
                     var cData = callback(name, args);
                     if (cData == null)
                     {
-                        return default(T);
+                        return default;
                     }
 
                     Set(name, cData.NewCacheData, cData.KeepAlive);

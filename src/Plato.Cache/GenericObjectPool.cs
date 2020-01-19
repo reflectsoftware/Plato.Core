@@ -68,7 +68,7 @@ namespace Plato.Cache
         /// </summary>
         /// <param name="initialPoolSize">Initial size of the pool.</param>
         /// <param name="maxGrowSize">Maximum size of the grow.</param>
-        public GenericObjectPool(int initialPoolSize, int maxGrowSize, TData data = default(TData))
+        public GenericObjectPool(int initialPoolSize, int maxGrowSize, TData data = default)
         {
             _totalPoolSize = 0;
             _availablePoolObjects = 0;

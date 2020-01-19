@@ -339,7 +339,7 @@ namespace Plato.Cache
                 var node = GetCachedNode(name);
                 if (node == null)
                 {
-                    return default(T);
+                    return default;
                 }                
 
                 return (T)node.Data;
@@ -376,7 +376,7 @@ namespace Plato.Cache
             {
                 if(callback == null)
                 {
-                    return default(T);
+                    return default;
                 }
 
                 using (var rLock = new ResourceLock(name))
@@ -390,7 +390,7 @@ namespace Plato.Cache
                             var cData = callback(name, args);
                             if (cData == null)
                             {
-                                return default(T);
+                                return default;
                             }
 
                             Set(name, cData.NewCacheData, cData.KeepAlive);
@@ -423,7 +423,7 @@ namespace Plato.Cache
             {
                 if (callbackAsync == null)
                 {
-                    return default(T);
+                    return default;
                 }
 
                 using (var rLock = new ResourceLockAsync(name))
@@ -436,7 +436,7 @@ namespace Plato.Cache
                             var cData = await callbackAsync(name, args);
                             if (cData == null)
                             {
-                                return default(T);
+                                return default;
                             }
 
                             Set(name, cData.NewCacheData, cData.KeepAlive);

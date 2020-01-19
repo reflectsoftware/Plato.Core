@@ -115,7 +115,7 @@ namespace Plato.Redis.Collections
         public T Pop()
         {
             var value = _redisList.RedisDb.ListLeftPop(_redisList.RedisKey);
-            return value.HasValue ? _redisList.Serializer.Deserialize<T>(value) : default(T);
+            return value.HasValue ? _redisList.Serializer.Deserialize<T>(value) : default;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Plato.Redis.Collections
         public async Task<T> PopAsync()
         {
             var value = await _redisList.RedisDb.ListLeftPopAsync(_redisList.RedisKey);
-            return value.HasValue ? _redisList.Serializer.Deserialize<T>(value) : default(T);
+            return value.HasValue ? _redisList.Serializer.Deserialize<T>(value) : default;
         }
 
         /// <summary>

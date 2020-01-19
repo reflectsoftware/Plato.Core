@@ -546,30 +546,30 @@ namespace Plato.TestHarness.RedisTest
 
                 using (var redisConnection = new RedisConnection(connectionStrings))
                 {
-                    //var lockAcquisition = new RedisDLM();
-                    //var container = new HashRedisCacheContainer(redisConnection, $"{redisNamespace}:cache");
-                    //// var container = new StringRedisCacheContainer(redisConnection, $"{dev:hubster:identity}:cache");
-                    //var cache = new RedisCache(redisConnection, lockAcquisition, container);
+                    var lockAcquisition = new RedisDLM();
+                    // var container = new HashRedisCacheContainer(redisConnection, $"{redisNamespace}:cache");
+                    var container = new StringRedisCacheContainer(redisConnection, $"dev:hubster:identity:cache");
+                    var cache = new RedisCache(redisConnection, lockAcquisition, container);
 
-                    //var t1 = await cache.GetAsync("test1", (name, args) =>
-                    //{
-                    //    return Task.FromResult(new CacheDataInfo<string>
-                    //    {
-                    //        NewCacheData = "Ross1",
-                    //        // KeepAlive = TimeSpan.FromSeconds(5)
-                    //    });
-                    //});
-
-                    var d = new RedisDictionary<string, Crap<TestClass>>(redisConnection.GetDatabase(), $"{redisNamespace}:dick", new JsonRedisSerializer()); // new MsgPackRedisSerializer());
-                    var t1 = d.GetOrAdd("test", name =>
+                    var t1 = await cache.GetAsync("test1", (name, args) =>
                     {
-                        return new Crap<TestClass> { Value = new TestClass { Id = 123, Name = "Hello" } };
+                        return Task.FromResult(new CacheDataInfo<string>
+                        {
+                            NewCacheData = "Ross1",
+                            KeepAlive = TimeSpan.FromSeconds(60)
+                        });
                     });
 
-                    t1 = await d.GetAsync("test");
+                    //var d = new RedisDictionary<string, Crap<TestClass>>(redisConnection.GetDatabase(), $"{redisNamespace}:dick", new JsonRedisSerializer()); // new MsgPackRedisSerializer());
+                    //var t1 = d.GetOrAdd("test", name =>
+                    //{
+                    //    return new Crap<TestClass> { Value = new TestClass { Id = 123, Name = "Hello" } };
+                    //});
+
+                    //t1 = await d.GetAsync("test");
 
                     // var d = new RedisDictionary<string, Crap>(redisConnection.GetDatabase(), "test", new JsonRedisSerializer()); // new MsgPackRedisSerializer());       
-                    var dtest = new Dictionary<int, string>();
+                    // var dtest = new Dictionary<int, string>();
                     //dtest.Add(1, "Ross");
                     //dtest.Add(2, "Tammy");
 
