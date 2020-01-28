@@ -35,7 +35,7 @@ Package name  | .NET Core
 
 If you want Plato.NetCore, just open up Visual Studio 2019 and search "Plato.NetCore" in the Extension Manager.
 
-After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.NetCore/wiki) and get started.
+After you create a project, head to our [documentation wiki](https://github.com/reflectsoftware/Plato.Core/wiki) and get started.
 
 
 ### Additional Resources
