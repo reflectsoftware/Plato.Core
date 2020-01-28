@@ -1,6 +1,6 @@
 # Plato.NetCore  [![Documentation](https://img.shields.io/badge/docs-wiki-yellow.svg)](https://github.com/reflectsoftware/Plato.Core/wiki) [![Stars](https://img.shields.io/github/stars/reflectsoftware/Plato.Core.svg)](https://github.com/reflectsoftware/Plato.Core/stargazers) 
 
-**Platforms** - .NET Core 2.2 or higher
+**Platforms** - netstandard2.0, netstandard2.1
 
 ## Build Status
 
