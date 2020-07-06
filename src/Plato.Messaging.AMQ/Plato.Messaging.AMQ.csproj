@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Apache.NMS.ActiveMQ.NetStd" Version="1.7.2.4115" />
+    <PackageReference Include="Apache.NMS.ActiveMQ.NetStd" Version="1.7.3" />
   </ItemGroup>  
 
   <ItemGroup>
