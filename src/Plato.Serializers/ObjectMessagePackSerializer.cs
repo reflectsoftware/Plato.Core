@@ -1,10 +1,10 @@
-﻿// Plato.Core
+// Plato.Core
 // Copyright (c) 2020 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-using MsgPack.Serialization;
 using System;
 using System.IO;
+using MessagePack;
 
 namespace Plato.Serializers
 {
@@ -21,7 +21,7 @@ namespace Plato.Serializers
         /// <param name="obj">The object.</param>
         public override void Serialize(Stream stream, object obj)
         {
-            MessagePackSerializer.Get(obj.GetType()).Pack(stream, obj);
+            MessagePackSerializer.Serialize(obj.GetType(),stream, obj);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Plato.Serializers
         {
             using (var ms = new MemoryStream(bObj))
             {
-                return MessagePackSerializer.Get<T>().Unpack(ms);
+                return MessagePackSerializer.Deserialize<T>(ms);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Plato.Serializers
         {
             using (var ms = new MemoryStream(bObj))
             {
-                return MessagePackSerializer.Get(type).Unpack(ms);
+                return MessagePackSerializer.Deserialize(type,ms);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Plato.Serializers
         /// <returns></returns>
         public override T Deserialize<T>(Stream stream)
         {
-            return MessagePackSerializer.Get<T>().Unpack(stream);
+            return MessagePackSerializer.Deserialize<T>(stream);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Plato.Serializers
         /// <returns></returns>
         public override object Deserialize(Type type, Stream stream)
         {
-            return MessagePackSerializer.Get(type).Unpack(stream);
+            return MessagePackSerializer.Deserialize(type, stream);
         }
     }
 }

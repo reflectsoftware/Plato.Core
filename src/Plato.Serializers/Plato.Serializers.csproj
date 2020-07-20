@@ -16,8 +16,8 @@
     <Description>Plato.Serializers .NET Core library</Description>
   </PropertyGroup>
 
-  <ItemGroup>    
-    <PackageReference Include="ServiceStack.MsgPack.Core" Version="5.9.0" />        
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="2.1.152" />
   </ItemGroup>
 
   <ItemGroup>
