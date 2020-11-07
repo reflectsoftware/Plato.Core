@@ -542,7 +542,7 @@ namespace Plato.TestHarness.RedisTest
 
             try
             {
-                var redisNamespace = "dev:hubster:identity";
+                // var redisNamespace = "dev:hubster:identity";
 
                 using (var redisConnection = new RedisConnection(connectionStrings))
                 {

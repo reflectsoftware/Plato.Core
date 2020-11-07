@@ -34,7 +34,7 @@
   <ItemGroup>    
     <PackageReference Include="MediatR" Version="8.0.2" />    
     <PackageReference Include="SimpleInjector" Version="5.0.2" />    
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
