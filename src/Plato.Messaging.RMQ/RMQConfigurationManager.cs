@@ -57,88 +57,79 @@ namespace Plato.Messaging.RMQ
                     {
                         var configNode = configContainer.Node;
 
-                        var settingNodes = configNode.GetConfigNode($"./connectionSettings");
-                        if (settingNodes != null)
+                        var settingNodes = configNode.GetConfigNodes($"./connectionSettings");
+                        foreach (var settingNode in settingNodes)
                         {
-                            foreach(var settingNode in settingNodes.GetConfigNodes("."))
-                            {
-                                var connectionSettings = new RMQConnectionSettings();
-                                Settings.Connections.Add(connectionSettings);
+                            var connectionSettings = new RMQConnectionSettings();
+                            Settings.Connections.Add(connectionSettings);
 
-                                connectionSettings.Name = settingNode.GetAttribute(".", "name", "");
-                                connectionSettings.Username = settingNode.GetAttribute(".", "username", "");
-                                connectionSettings.Password = settingNode.GetAttribute(".", "password", "");
-                                connectionSettings.VirtualHost = settingNode.GetAttribute(".", "virtualhost", "/");
-                                connectionSettings.Uri = settingNode.GetAttribute(".", "uri", "amqp://localhost:5672");
-                                connectionSettings.DelayOnReconnect = int.Parse(settingNode.GetAttribute(".", "delayOnReconnect", "1000"));                                
-                                connectionSettings.ForceReconnectionTime = TimeSpan.FromMinutes(int.Parse(settingNode.GetAttribute(".", "forceReconnectionTime", "0")));
-                            }
+                            connectionSettings.Name = settingNode.GetAttribute(".", "name", "");
+                            connectionSettings.Username = settingNode.GetAttribute(".", "username", "");
+                            connectionSettings.Password = settingNode.GetAttribute(".", "password", "");
+                            connectionSettings.VirtualHost = settingNode.GetAttribute(".", "virtualhost", "/");
+                            connectionSettings.Uri = settingNode.GetAttribute(".", "uri", "amqp://localhost:5672");
+                            connectionSettings.DelayOnReconnect = int.Parse(settingNode.GetAttribute(".", "delayOnReconnect", "1000"));
+                            connectionSettings.ForceReconnectionTime = TimeSpan.FromMinutes(int.Parse(settingNode.GetAttribute(".", "forceReconnectionTime", "0")));
                         }
 
-                        var exchangeNodes = configNode.GetConfigNode($"./exchange");
-                        if (exchangeNodes != null)
+                        var exchangeNodes = configNode.GetConfigNodes($"./exchange");
+                        foreach (var exchangeNode in exchangeNodes)
                         {
-                            foreach(var exchangeNode in exchangeNodes.GetConfigNodes("."))
+                            var exchangeSettings = new RMQExchangeSettings(exchangeNode.GetAttribute(".", "name", ""));
+                            Settings.Exchanges.Add(exchangeSettings);
+
+                            exchangeSettings.ExchangeName = exchangeNode.GetAttribute(".", "exchangeName", "");
+                            exchangeSettings.Type = exchangeNode.GetAttribute(".", "type", "direct");
+                            exchangeSettings.Durable = exchangeNode.GetAttribute(".", "durable", "true") == "true";
+                            exchangeSettings.AutoDelete = exchangeNode.GetAttribute(".", "autoDelete", "false") == "true";
+
+                            var argsNode = configNode.GetConfigNode($"./exchange[@name='{exchangeSettings.Name}']/arguments");
+                            if (argsNode != null)
                             {
-                                var exchangeSettings = new RMQExchangeSettings(exchangeNode.GetAttribute(".", "name", ""));
-                                Settings.Exchanges.Add(exchangeSettings);
-
-                                exchangeSettings.ExchangeName = exchangeNode.GetAttribute(".", "exchangeName", "");
-                                exchangeSettings.Type = exchangeNode.GetAttribute(".", "type", "direct");
-                                exchangeSettings.Durable = exchangeNode.GetAttribute(".", "durable", "true") == "true";
-                                exchangeSettings.AutoDelete = exchangeNode.GetAttribute(".", "autoDelete", "false") == "true";
-
-                                var argsNode = configNode.GetConfigNode($"./exchange[@name='{exchangeSettings.Name}']/arguments");
-                                if (argsNode != null)
+                                var attributes = argsNode.GetAttributes();
+                                foreach (var key in attributes.AllKeys)
                                 {
-                                    var attributes = argsNode.GetAttributes();
-                                    foreach (var key in attributes.AllKeys)
-                                    {
-                                        exchangeSettings.Arguments[key] = attributes[key];
-                                    }
+                                    exchangeSettings.Arguments[key] = attributes[key];
                                 }
                             }
                         }
 
-                        var queueNodes = configNode.GetConfigNode($"./queue");
-                        if (queueNodes != null)
+                        var queueNodes = configNode.GetConfigNodes($"./queue");
+                        foreach (var queueNode in queueNodes)
                         {
-                            foreach (var queueNode in queueNodes.GetConfigNodes("."))
+                            var queueSettings = new RMQQueueSettings(queueNode.GetAttribute(".", "name", ""));
+                            Settings.Queues.Add(queueSettings);
+
+                            queueSettings.QueueName = queueNode.GetAttribute(".", "queueName", "");
+                            queueSettings.Durable = queueNode.GetAttribute(".", "durable", "true") == "true";
+                            queueSettings.Exclusive = queueNode.GetAttribute(".", "exclusive", "false") == "true";
+                            queueSettings.AutoDelete = queueNode.GetAttribute(".", "autoDelete", "false") == "true";
+                            queueSettings.Persistent = queueNode.GetAttribute(".", "persistent", "true") == "true";
+
+                            var routingKeys = queueNode.GetAttribute(".", "routingKeys", "");
+                            foreach (var key in routingKeys.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                             {
-                                var queueSettings = new RMQQueueSettings(queueNode.GetAttribute(".", "name", ""));
-                                Settings.Queues.Add(queueSettings);
+                                queueSettings.RoutingKeys.Add(key);
+                            }
 
-                                queueSettings.QueueName = queueNode.GetAttribute(".", "queueName", "");
-                                queueSettings.Durable = queueNode.GetAttribute(".", "durable", "true") == "true";
-                                queueSettings.Exclusive = queueNode.GetAttribute(".", "exclusive", "false") == "true";
-                                queueSettings.AutoDelete = queueNode.GetAttribute(".", "autoDelete", "false") == "true";
-                                queueSettings.Persistent = queueNode.GetAttribute(".", "persistent", "true") == "true";
-
-                                var routingKeys = queueNode.GetAttribute(".", "routingKeys", "");
-                                foreach (var key in routingKeys.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                            var argsNode = configNode.GetConfigNode($"./queue[@name='{queueSettings.Name}']/arguments");
+                            if (argsNode != null)
+                            {
+                                var attributes = argsNode.GetAttributes();
+                                foreach (var key in attributes.AllKeys)
                                 {
-                                    queueSettings.RoutingKeys.Add(key);
+                                    queueSettings.Arguments[key] = attributes[key];
                                 }
+                            }
 
-                                var argsNode = configNode.GetConfigNode($"./queue[@name='{queueSettings.Name}']/arguments");
-                                if (argsNode != null)
-                                {
-                                    var attributes = argsNode.GetAttributes();
-                                    foreach (var key in attributes.AllKeys)
-                                    {
-                                        queueSettings.Arguments[key] = attributes[key];
-                                    }
-                                }
-
-                                // get consumer info if it exists
-                                var consumerNode = configNode.GetConfigNode($"./queue[@name='{queueSettings.Name}']/consumer");
-                                if (consumerNode != null)
-                                {
-                                    queueSettings.ConsumerSettings.Tag = queueNode.GetAttribute(".", "tag", Guid.NewGuid().ToString());
-                                    queueSettings.ConsumerSettings.Exclusive = queueNode.GetAttribute(".", "exclusive", "false") == "true";
-                                    queueSettings.ConsumerSettings.NoAck = queueNode.GetAttribute(".", "noAck", "true") == "true";
-                                    queueSettings.ConsumerSettings.NoLocal = queueNode.GetAttribute(".", "noLocal", "true") == "true";
-                                }
+                            // get consumer info if it exists
+                            var consumerNode = configNode.GetConfigNode($"./queue[@name='{queueSettings.Name}']/consumer");
+                            if (consumerNode != null)
+                            {
+                                queueSettings.ConsumerSettings.Tag = queueNode.GetAttribute(".", "tag", Guid.NewGuid().ToString());
+                                queueSettings.ConsumerSettings.Exclusive = queueNode.GetAttribute(".", "exclusive", "false") == "true";
+                                queueSettings.ConsumerSettings.NoAck = queueNode.GetAttribute(".", "noAck", "true") == "true";
+                                queueSettings.ConsumerSettings.NoLocal = queueNode.GetAttribute(".", "noLocal", "true") == "true";
                             }
                         }
                     }

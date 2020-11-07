@@ -6,9 +6,9 @@ namespace Plato.TestHarness
         static void Main(string[] args)
         {
             // ConfigurationTest.ConfigurationPlayground.RunAsync().GetAwaiter();
-            RedisTest.RedisPlayground.RunAsync().GetAwaiter();     
+            // RedisTest.RedisPlayground.RunAsync().GetAwaiter();     
 
-            // Messaging.RMQPlayground.RunAsync().GetAwaiter();
+            Messaging.RMQPlayground.RunAsync().GetAwaiter();
             // Messaging.RMQPlayground.Run();
 
             // Messaging.AMQPlayground.RunAsync().GetAwaiter();

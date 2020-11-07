@@ -368,69 +368,68 @@ namespace Plato.TestHarness.Messaging
 
         static public async Task RunAsync()
         {
-            var configuration = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.Issue.json");
-            var connectionFactory = new RMQConnectionFactory();
-            var consumerFactory = new RMQConsumerFactory(connectionFactory);
-            var producerFactory = new RMQProducerFactory(connectionFactory);
-            var subscriberFactory = new RMQSubscriberFactory(connectionFactory);
-            var publisherFactory = new RMQPublisherFactory(connectionFactory);
-            var factory = new RMQSenderReceiverFactory(consumerFactory, producerFactory, subscriberFactory, publisherFactory);
-            var pool = new RMQPoolAsync(configuration, factory, 10);
+            ////var configuration = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.Issue.json");
+            //var configuration = new RMQConfigurationManager($"{AppDomain.CurrentDomain.BaseDirectory}RMQSettings.json");
+            //var connectionFactory = new RMQConnectionFactory();
+            //var consumerFactory = new RMQConsumerFactory(connectionFactory);
+            //var producerFactory = new RMQProducerFactory(connectionFactory);
+            //var subscriberFactory = new RMQSubscriberFactory(connectionFactory);
+            //var publisherFactory = new RMQPublisherFactory(connectionFactory);
+            //var factory = new RMQSenderReceiverFactory(consumerFactory, producerFactory, subscriberFactory, publisherFactory);
+            //var pool = new RMQPoolAsync(configuration, factory, 10);
 
-            var result = (RMQReceiverResultText)null;
-            var queueDetails = configuration.GetQueueSettings("Engine.Inbound");
+            //var result = (RMQReceiverResultText)null;
+            //// var queueDetails = configuration.GetQueueSettings("Engine.Inbound");
+            //var queueDetails = configuration.GetQueueSettings("MyQueue");
 
-            using (var container = await pool.GetAsync<IRMQConsumerText>("connection", queueDetails.Name))
-            {
-                var reader = container.Instance;
-                reader.Mode = ConsumerMode.OnNoMessage_ReturnNull;
+            //using (var container = await pool.GetAsync<IRMQConsumerText>("connection", queueDetails.Name))
+            //{
+            //    var reader = container.Instance;
+            //    reader.Mode = ConsumerMode.OnNoMessage_ReturnNull;
 
-                try
-                {
-                    result = reader.Receive(1000);
-                    if (result != null)
-                    {
-                    }
-                }
-                catch (TimeoutException)
-                {
-                    // no data, just return null as an indicator
-                }
-                catch (MessageException ex)
-                {
-                    switch (ex.ExceptionCode)
-                    {
-                        case MessageExceptionCode.ExclusiveLock:
-                            await Task.Delay(1000);
-                            break;
+            //    try
+            //    {
+            //        result = reader.Receive(1000);
+            //        if (result != null)
+            //        {
+            //        }
+            //    }
+            //    catch (TimeoutException)
+            //    {
+            //        // no data, just return null as an indicator
+            //    }
+            //    catch (MessageException ex)
+            //    {
+            //        switch (ex.ExceptionCode)
+            //        {
+            //            case MessageExceptionCode.ExclusiveLock:
+            //                await Task.Delay(1000);
+            //                break;
 
-                        case MessageExceptionCode.LostConnection:
-                            await Task.Delay(1000);
-                            reader.ClearCacheBuffer();
-                            throw;
+            //            case MessageExceptionCode.LostConnection:
+            //                await Task.Delay(1000);
+            //                reader.ClearCacheBuffer();
+            //                throw;
 
-                        default:
-                            reader.ClearCacheBuffer();
-                            throw;
-                    }
-                }
-                catch (Exception)
-                {
-                    result?.Reject();
-                    throw;
-                }
-            }
-
-
+            //            default:
+            //                reader.ClearCacheBuffer();
+            //                throw;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        result?.Reject();
+            //        throw;
+            //    }
+            //}
 
             //var qs = configManager.GetQueueSettings("Ross");
-
 
             // await PublisherAsync("Ross", "Red");
 
             // await ProducerPerformanceTestAsync();
             // await ProducerAsync();
-            // await ConsumerAsync();
+            await ConsumerAsync();
             // await PoolTestAsync();
             // await SimplePoolTestAsync();
 

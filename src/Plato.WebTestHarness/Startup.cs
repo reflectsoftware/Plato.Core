@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Plato.Autofac;
 using Plato.Messaging.RMQ;
 using Plato.Messaging.RMQ.Builder;
 using Plato.WebTestHarness.RMQConsumers;
@@ -20,29 +19,27 @@ namespace Plato.WebTestHarness
             Configuration = configuration;
         }                
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             var configManager = new RMQConfigurationManager();
             var connectionSettings = configManager.GetConnectionSettings("connection");
             var exchangeSettings = configManager.GetExchangeSettings("my_rmq_test_exchange");
             var queueSettings = configManager.GetQueueSettings("my_rmq_test");
 
-            //services.AddRMQBoundConsumer<TestBoundConsumerText>(options =>
-            //{
-            //    options.ConnectionSettings = connectionSettings;
-            //    options.QueueSettings = queueSettings;            
-            //});
-
-            services.AddRMQBoundSubscriber<TestBoundConsumerText>(options =>
+            services.AddRMQBoundConsumer<TestBoundConsumerText>(options =>
             {
                 options.ConnectionSettings = connectionSettings;
-                options.ExchangeSettings = exchangeSettings;
-                options.QueueSettings = queueSettings;                               
+                options.QueueSettings = queueSettings;
             });
 
-            services.AddControllers();
+            //services.AddRMQBoundSubscriber<TestBoundConsumerText>(options =>
+            //{
+            //    options.ConnectionSettings = connectionSettings;
+            //    options.ExchangeSettings = exchangeSettings;
+            //    options.QueueSettings = queueSettings;                               
+            //});
 
-            return services.AddDependencyInjections();
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
