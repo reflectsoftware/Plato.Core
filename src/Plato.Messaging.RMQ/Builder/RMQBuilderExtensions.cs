@@ -97,8 +97,8 @@ namespace Plato.Messaging.RMQ.Builder
             foreach (var type in _Consumers.Keys)
             {
                 Task.Run(async () =>
-                {                    
-                    var logger = logFactory.CreateLogger(type);                    
+                {
+                    var logger = logFactory.CreateLogger(type);
                     var options = _Consumers[type];
                     var consumer = (IRMQConsumer)null;
                     var isTextConsumer = typeof(IRMQBoundConsumerText).IsAssignableFrom(type);
@@ -193,13 +193,13 @@ namespace Plato.Messaging.RMQ.Builder
                                 }
                                 catch (Exception ex2)
                                 {
-                                    var aggregateException = new AggregateException("RMQ Consumer Error (OnException Handler fault).", new[] { ex, ex2 });                                    
+                                    var aggregateException = new AggregateException("RMQ Consumer Error (OnException Handler fault).", new[] { ex, ex2 });
                                     logger.LogError(aggregateException, aggregateException.Message);
                                 }
                             }
                         }
                     }
-                }).GetAwaiter();
+                }); //.GetAwaiter();
             }
         }
 
