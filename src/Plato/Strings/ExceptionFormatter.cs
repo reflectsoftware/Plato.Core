@@ -106,9 +106,9 @@ namespace Plato.Strings
         public static string ConstructMessage(Exception exception, NameValueCollection additionalInfo = null, Func<Exception, IEnumerable<ExceptionFormatterExtension>> extension = null)
         {
             additionalInfo = additionalInfo ?? new NameValueCollection();
-            additionalInfo["TrackingId"] = Guid.NewGuid().ToString();
-            additionalInfo["MachineName"] = Environment.MachineName;
-            additionalInfo["UTC"] = DateTime.UtcNow.ToString();
+            additionalInfo["TrackingId"] = additionalInfo["TrackingId"] ?? Guid.NewGuid().ToString();
+            additionalInfo["MachineName"] = additionalInfo["MachineName"] ?? Environment.MachineName;
+            additionalInfo["UTC"] = additionalInfo["UTC"] ?? DateTime.UtcNow.ToString();
 
             var body = new StringBuilder();
             body.AppendFormat("The following exception occurred:{0}", Environment.NewLine);
