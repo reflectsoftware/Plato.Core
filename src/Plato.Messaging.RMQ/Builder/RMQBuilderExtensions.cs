@@ -199,7 +199,7 @@ namespace Plato.Messaging.RMQ.Builder
                             }
                         }
                     }
-                }); //.GetAwaiter();
+                }); 
             }
         }
 
