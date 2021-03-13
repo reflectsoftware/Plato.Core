@@ -184,8 +184,7 @@ namespace Plato.Messaging.RMQ.Builder
                             }
                             catch (Exception ex)
                             {
-                                consumer.ClearCacheBuffer();
-                                logger.LogError(ex, "RMQ Consumer Error.");
+                                consumer.ClearCacheBuffer();                                
 
                                 try
                                 {
