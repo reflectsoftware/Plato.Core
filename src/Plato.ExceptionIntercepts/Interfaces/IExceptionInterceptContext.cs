@@ -24,5 +24,11 @@ namespace Plato.ExceptionIntercepts.ExceptionInterceptHandler.Interfaces
         /// The exception.
         /// </value>
         Exception Exception { get; }
+
+        /// <summary>
+        /// Sets the exception.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        void SetException(Exception ex);
     }
 }
